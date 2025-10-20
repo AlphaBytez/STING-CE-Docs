@@ -1,7 +1,7 @@
 ---
 title: "Kratos Passkey Guide"
 linkTitle: "Kratos Passkey Guide"
-weight: 10
+weight: 40
 description: >
   Guide for implementing WebAuthn/passkey authentication in STING with Kratos.
 ---

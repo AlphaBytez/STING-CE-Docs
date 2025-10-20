@@ -1,7 +1,7 @@
 ---
 title: "Kratos WebAuthn Implementation Guide"
 linkTitle: "Kratos WebAuthn Implementation Guide"
-weight: 10
+weight: 50
 description: >
   Technical guide for implementing Kratos WebAuthn authentication flows in STING.
 ---

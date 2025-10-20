@@ -1,7 +1,7 @@
 ---
 title: "HONEY COMBS CONNECTOR DESIGN"
 linkTitle: "HONEY COMBS CONNECTOR DESIGN"
-weight: 10
+weight: 70
 description: >
   Honey Combs Connector Design - comprehensive documentation.
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Model Modes Guide"
 linkTitle: "Model Modes Guide"
-weight: 10
+weight: 30
 description: >
   Guide for choosing between small and performance model modes in STING CE.
 ---

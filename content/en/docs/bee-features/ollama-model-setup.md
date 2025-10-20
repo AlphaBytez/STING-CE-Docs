@@ -1,7 +1,7 @@
 ---
 title: "Ollama Model Setup"
 linkTitle: "Ollama Model Setup"
-weight: 10
+weight: 20
 description: >
   Guide for setting up Ollama models for local AI capabilities in STING.
 ---

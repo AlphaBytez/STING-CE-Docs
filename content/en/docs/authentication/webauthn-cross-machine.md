@@ -1,7 +1,7 @@
 ---
 title: "WebAuthn Cross Machine"
 linkTitle: "WebAuthn Cross Machine"
-weight: 10
+weight: 75
 description: >
   Guide for using WebAuthn passkeys across multiple machines with consistent domain configuration.
 ---

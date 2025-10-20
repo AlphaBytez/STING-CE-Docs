@@ -1,7 +1,7 @@
 ---
 title: "Kratos Registration Guide"
 linkTitle: "Kratos Registration Guide"
-weight: 10
+weight: 20
 description: >
   Guide for completing user registration with Kratos authentication in STING.
 ---

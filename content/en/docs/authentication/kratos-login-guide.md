@@ -1,7 +1,7 @@
 ---
 title: "Kratos Login Guide"
 linkTitle: "Kratos Login Guide"
-weight: 10
+weight: 30
 description: >
   Guide for testing and troubleshooting Kratos authentication in STING.
 ---

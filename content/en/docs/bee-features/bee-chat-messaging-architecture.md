@@ -1,7 +1,7 @@
 ---
-title: "BEE CHAT MESSAGING ARCHITECTURE"
-linkTitle: "BEE CHAT MESSAGING ARCHITECTURE"
-weight: 10
+title: "Bee Chat Messaging Architecture"
+linkTitle: "Bee Chat Messaging Architecture"
+weight: 25
 description: >
   Bee Chat Messaging Architecture - comprehensive documentation.
 ---

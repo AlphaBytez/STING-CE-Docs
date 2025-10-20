@@ -1,7 +1,7 @@
 ---
 title: "Passkey Implementation Guide"
 linkTitle: "Passkey Implementation Guide"
-weight: 10
+weight: 60
 description: >
   Detailed guide for implementing WebAuthn/passkey authentication in STING applications.
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Passwordless Authentication"
 linkTitle: "Passwordless Authentication"
-weight: 10
+weight: 5
 description: >
   Modern passwordless authentication system prioritizing security and user experience in STING.
 ---

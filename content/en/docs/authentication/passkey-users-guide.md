@@ -1,7 +1,7 @@
 ---
 title: "Passkey Users Guide"
 linkTitle: "Passkey Users Guide"
-weight: 10
+weight: 70
 description: >
   User guide for implementing, testing, and troubleshooting passkey authentication in STING.
 ---

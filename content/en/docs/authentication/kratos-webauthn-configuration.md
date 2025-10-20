@@ -1,7 +1,7 @@
 ---
 title: "Kratos WebAuthn Configuration"
 linkTitle: "Kratos WebAuthn Configuration"
-weight: 10
+weight: 55
 description: >
   Configuration guide for Kratos WebAuthn implementation in STING.
 ---

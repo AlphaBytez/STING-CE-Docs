@@ -1,7 +1,7 @@
 ---
 title: "Memory Architecture Guide"
 linkTitle: "Memory Architecture Guide"
-weight: 10
+weight: 50
 description: >
   Comprehensive memory architecture guide for persistent, cross-model memory sharing in STING.
 ---

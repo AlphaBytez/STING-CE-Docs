@@ -1,9 +1,9 @@
 ---
-title: "Uee conversation management"
-linkTitle: "Uee conversation management"
-weight: 10
+title: "Bee Conversation Management"
+linkTitle: "Bee Conversation Management"
+weight: 15
 description: >
-  Uee Conversation Management - comprehensive documentation.
+  Bee Conversation Management - comprehensive documentation.
 ---
 
 # 🐝 Bee Conversation Management

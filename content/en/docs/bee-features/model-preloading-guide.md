@@ -1,7 +1,7 @@
 ---
 title: "Model Preloading Guide"
 linkTitle: "Model Preloading Guide"
-weight: 10
+weight: 40
 description: >
   Guide for configuring model preloading to ensure fast response times in STING-CE.
 ---
