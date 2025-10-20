@@ -807,3 +807,151 @@ img[src*="sting-logo"] {
     font-size: 16px !important;
   }
 }
+
+/* Tab navigation styling - Fix unreadable black text GLOBALLY */
+/* Important: Override Bootstrap default black text on ALL tabs */
+.nav-tabs,
+.nav-pills,
+.nav,
+ul.nav {
+  border-bottom: 2px solid rgba(234, 179, 8, 0.3);
+}
+
+/* ALL nav links - override Bootstrap defaults */
+.nav-tabs .nav-link,
+.nav-pills .nav-link,
+.nav .nav-link,
+ul.nav li a,
+.tabbed-set label {
+  color: #cbd5e1 !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-bottom: none;
+  margin-right: 0.25rem;
+  border-radius: 0.375rem 0.375rem 0 0;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Hover state for ALL tabs */
+.nav-tabs .nav-link:hover,
+.nav-pills .nav-link:hover,
+.nav .nav-link:hover,
+ul.nav li a:hover,
+.tabbed-set label:hover {
+  color: #fbbf24 !important;
+  background: rgba(234, 179, 8, 0.15) !important;
+  border-color: rgba(234, 179, 8, 0.3) !important;
+}
+
+/* Active state for ALL tabs */
+.nav-tabs .nav-link.active,
+.nav-pills .nav-link.active,
+.nav .nav-link.active,
+ul.nav li.active a,
+.nav-tabs .nav-item.show .nav-link,
+.tabbed-set input:checked + label {
+  color: #0a0a0a !important;
+  background: #eab308 !important;
+  border-color: #eab308 !important;
+  font-weight: 600;
+}
+
+.nav-tabs .nav-item,
+.nav-pills .nav-item,
+.nav .nav-item {
+  margin-bottom: 0;
+}
+
+/* Tab content pane styling */
+.tab-content,
+.tabbed-content {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(234, 179, 8, 0.2);
+  border-top: none;
+  padding: 1.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.tab-pane,
+.tabbed-block {
+  color: #e2e8f0 !important;
+}
+
+/* Tabpane shortcode styling */
+.td-content .tab-pane {
+  padding-top: 1rem;
+}
+
+.td-content .nav-tabs,
+.td-content .nav-pills,
+.td-content .nav {
+  margin-bottom: 0;
+}
+
+/* Hugo tabpane specific overrides */
+.td-content .tabpane-wrapper .nav-tabs .nav-link {
+  color: #cbd5e1 !important;
+}
+
+.td-content .tabpane-wrapper .nav-tabs .nav-link.active {
+  color: #0a0a0a !important;
+  background: #eab308 !important;
+}
+
+/* Increase spacing between major sections - MUCH more space */
+.td-content h2 {
+  margin-top: 6rem !important;
+  margin-bottom: 2.5rem !important;
+  padding-top: 3rem !important;
+}
+
+.td-content h2:first-of-type,
+.td-content > h2:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.td-content h3 {
+  margin-top: 3.5rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.td-content h4 {
+  margin-top: 3rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* More spacing around horizontal rules */
+.td-content hr {
+  margin: 4rem 0 !important;
+  border: none;
+  border-top: 2px solid rgba(234, 179, 8, 0.2);
+}
+
+/* Spacing around alerts */
+.td-content .alert {
+  margin: 2.5rem 0 !important;
+}
+
+/* Spacing around code blocks */
+.td-content pre {
+  margin: 2.5rem 0 !important;
+}
+
+/* Spacing around details/summary elements */
+.td-content details {
+  margin: 2.5rem 0 !important;
+}
+
+/* Spacing around tables */
+.td-content table {
+  margin: 2.5rem 0 !important;
+}
+
+/* Extra spacing before major section transitions */
+.td-content h2 + .alert,
+.td-content h2 + p {
+  margin-top: 1.5rem !important;
+}

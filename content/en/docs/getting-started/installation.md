@@ -8,58 +8,214 @@ description: >
 
 # STING Platform Installation Guide
 
+Welcome to STING! This guide will walk you through installing STING on your system. The installation is designed to be straightforward and handles most dependencies automatically.
+
+---
+
 ## System Requirements
 
 ### Minimum Requirements
-- **Operating System**: macOS 11+ (Apple Silicon recommended) or Linux (Ubuntu 20.04+)
-- **Memory**: 16GB RAM minimum (32GB+ recommended for production)
-- **Storage**: 50GB free disk space (models require additional 10-50GB)
-- **Docker**: Docker Desktop 4.0+ with Docker Compose
-- **Network**: Internet connection for initial setup and model downloads
 
-### Recommended Configuration
+{{< alert title="Hardware Requirements" color="info" >}}
+STING Core requires **8GB RAM minimum** and **30GB free disk space**. Docker Desktop 4.0+ with Docker Compose is required. AI models run via Ollama (separate) or external APIs (no extra resources).
+{{< /alert >}}
 
-#### Small Deployment (1-5 users, <1000 documents)
-- **CPU**: Apple M1/M2/M3 or Intel/AMD with 8+ cores
-- **Memory**: 16GB RAM (optimized allocation uses 75% efficiently)
-- **Storage**: 100GB SSD
-- **Network**: 100 Mbps connection
-- **Docker Resources**: Optimized limits prevent resource conflicts
+#### Check Your System
 
-#### Medium Deployment (5-20 users, 1000-10000 documents)  
-- **CPU**: Apple M2 Pro/M3 or Intel/AMD with 12+ cores
-- **Memory**: 32GB RAM (allows headroom for growth)
-- **Storage**: 250GB SSD (NVMe preferred)
-- **Network**: 1 Gbps connection
-- **Additional**: Consider dedicated ChromaDB instance
+```bash
+# Check OS version
+uname -a                    # Linux
+sw_vers                     # macOS
 
-#### Large Deployment (20+ users, 10000+ documents)
-- **CPU**: Apple M2 Max/M3 Max or Intel/AMD with 16+ cores
-- **Memory**: 64GB+ RAM (enables multiple knowledge workers)
-- **Storage**: 500GB+ SSD with high IOPS
-- **Network**: 10 Gbps connection  
-- **Additional**: Redis cluster, separate knowledge processing workers
-- **GPU**: Metal Performance Shaders (macOS) or CUDA-compatible (Linux)
+# Check available memory
+free -h                     # Linux
+sysctl hw.memsize          # macOS
 
-## Pre-Installation Setup
+# Check available disk space
+df -h
 
-### Minimal Requirements
+# Check Docker installation
+docker --version
+docker compose version
+```
 
-STING installer is designed to **automatically handle most dependencies**. You only need:
+#### STING Core Requirements
 
-**Required (Manual Install):**
-- **Git**: For cloning the repository
-- **Internet Connection**: For downloading Docker and dependencies
+```yaml
+Operating System:
+  - macOS: 11+ (Big Sur or later)
+  - Linux: Ubuntu 20.04+ or equivalent
+  - Note: Apple Silicon (M1/M2/M3) recommended for macOS
 
-**Auto-Installed by STING:**
-- Docker Engine (apt-based, replaces snap if detected)
-- Docker Compose plugin
-- jq (JSON processor)
-- All Python dependencies (runs in containers)
+CPU:
+  - Minimum: 4 cores
+  - Recommended: 6-8 cores for comfortable performance
+  - Production: 8+ cores for concurrent users
 
-### 1. Install Git (if not already installed)
+Memory (STING Core Only):
+  - Minimum: 8GB RAM
+  - Recommended: 12-16GB RAM
+  - Production: 16GB+ RAM for large datasets
+  - Docker Allocation: 6-8GB RAM for core services
 
-**macOS:**
+Storage (STING Core Only):
+  - System: 20-30GB for STING services
+  - Documents: Scale based on knowledge base size
+  - Backups: Additional space for database backups
+
+Network:
+  - Initial Setup: Internet required for downloads
+  - Operation: Can run offline after setup (except external AI)
+  - Speed: 100 Mbps+ recommended
+
+Docker:
+  - Version: Docker Desktop 4.0 or later
+  - Required: Docker Compose plugin
+  - Resources: Allocate 6-8GB RAM to Docker
+```
+
+#### AI Model Requirements (Separate)
+
+{{< alert title="AI Models Run Separately" color="primary" >}}
+STING uses external AI services by default. Resources below are only needed if running Ollama locally.
+{{< /alert >}}
+
+```yaml
+Option 1: External AI (Recommended for most users):
+  Additional RAM: 0GB (runs in cloud)
+  Additional Storage: 0GB (no local models)
+  Examples: OpenAI, Claude, Gemini
+
+Option 2: Ollama Local (Privacy-focused):
+  Additional RAM: +4-8GB depending on model size
+  Additional Storage: +10-30GB for model files
+  Models:
+    - phi3:mini: ~2GB, runs on 4GB RAM
+    - llama3:8b: ~5GB, runs on 8GB RAM
+    - deepseek-r1: ~8GB, runs on 12GB RAM
+
+Option 3: Legacy In-Process Models (Not recommended):
+  Additional RAM: +8-16GB for model loading
+  Additional Storage: +20-50GB for model files
+  Note: Deprecated in favor of Ollama/External AI
+```
+
+#### Tested Configurations
+
+```yaml
+Minimum Viable (Tested):
+  CPU: 4 cores
+  RAM: 8GB total (6GB to Docker)
+  Storage: 30GB
+  AI: External API or Ollama on separate host
+  Use Case: Single user, small datasets (<1000 docs)
+
+Comfortable Development (Tested):
+  CPU: 4-6 cores
+  RAM: 16GB total (8GB to Docker + 4GB for Ollama)
+  Storage: 50GB
+  AI: Ollama local with phi3:mini
+  Use Case: 1-5 users, moderate datasets (<10k docs)
+
+Production Baseline:
+  CPU: 8+ cores
+  RAM: 16GB+ total
+  Storage: 100GB+
+  AI: External API or dedicated Ollama instance
+  Use Case: 5-20 users, large datasets (10k+ docs)
+```
+
+### Recommended Configurations
+
+<details>
+<summary><strong>Small Deployment (1-5 users, <1000 documents)</strong></summary>
+
+```yaml
+Profile: Small Team / Development
+Users: 1-5 concurrent users
+Documents: < 1,000 documents
+
+Hardware:
+  CPU: Apple M1/M2/M3 or Intel/AMD 8+ cores
+  Memory: 16GB RAM
+  Storage: 100GB SSD
+  Network: 100 Mbps
+
+Docker Resources:
+  Memory Limit: 12GB
+  CPU Limit: 6 cores
+  Optimized: Resource limits included
+```
+
+</details>
+
+<details>
+<summary><strong>Medium Deployment (5-20 users, 1000-10000 documents)</strong></summary>
+
+```yaml
+Profile: Medium Organization
+Users: 5-20 concurrent users
+Documents: 1,000 - 10,000 documents
+
+Hardware:
+  CPU: Apple M2 Pro/M3 or Intel/AMD 12+ cores
+  Memory: 32GB RAM
+  Storage: 250GB NVMe SSD
+  Network: 1 Gbps
+
+Docker Resources:
+  Memory Limit: 24GB
+  CPU Limit: 10 cores
+
+Scaling Recommendations:
+  - Consider dedicated ChromaDB instance
+  - Separate Redis cache server
+  - Load balancer for multiple app instances
+```
+
+</details>
+
+<details>
+<summary><strong>Large Deployment (20+ users, 10000+ documents)</strong></summary>
+
+```yaml
+Profile: Enterprise / Production
+Users: 20+ concurrent users
+Documents: 10,000+ documents
+
+Hardware:
+  CPU: Apple M2 Max/M3 Max or Intel/AMD 16+ cores
+  Memory: 64GB+ RAM
+  Storage: 500GB+ SSD with high IOPS (NVMe recommended)
+  Network: 10 Gbps
+  GPU: Metal Performance Shaders (macOS) or CUDA-compatible (Linux)
+
+Docker Resources:
+  Memory Limit: 48GB
+  CPU Limit: 14 cores
+
+Architecture:
+  - Redis cluster for caching
+  - Separate knowledge processing workers
+  - Dedicated ChromaDB with replication
+  - Load-balanced application servers
+  - Monitoring stack (Prometheus + Grafana)
+```
+
+</details>
+
+---
+
+## Quick Start Installation
+
+{{< alert title="Automated Setup" color="success" >}}
+STING automatically handles most dependencies including Docker installation, Docker Compose, and system utilities. You only need Git and an internet connection!
+{{< /alert >}}
+
+### Step 1: Install Git
+
+{{< tabpane text=true >}}
+{{% tab header="**macOS**" %}}
 ```bash
 # Install Xcode Command Line Tools (includes git)
 xcode-select --install
@@ -67,27 +223,19 @@ xcode-select --install
 # OR install via Homebrew
 brew install git
 ```
-
-**Linux (Ubuntu/Debian):**
+{{% /tab %}}
+{{% tab header="**Linux**" %}}
 ```bash
 # Update system packages
 sudo apt update
 
 # Install git
 sudo apt install -y git
-
-# OPTIONAL: Install curl (usually pre-installed)
-sudo apt install -y curl
 ```
+{{% /tab %}}
+{{< /tabpane >}}
 
-**Note:** The STING installer will automatically:
-- Detect and fix snap Docker installations
-- Install proper apt-based Docker if missing
-- Install Docker Compose plugin
-- Install jq and other utilities
-- Handle all Python dependencies in containers
-
-### 2. Clone Repository
+### Step 2: Clone Repository
 
 ```bash
 # Clone STING repository
@@ -98,25 +246,25 @@ cd sting-platform
 ls -la  # Should show manage_sting.sh, conf/, frontend/, etc.
 ```
 
-### 3. Run Installation
-
-The STING installer handles all system preparation automatically:
+### Step 3: Run Installation
 
 ```bash
 # Run the installer (handles all dependencies automatically)
 sudo bash install_sting.sh
-
-# The installer will automatically:
-# - Detect and fix snap Docker (replaces with apt version)
-# - Install Docker if not present
-# - Install required utilities (jq, etc.)
-# - Create installation directory (/opt/sting-ce or ~/.sting-ce)
-# - Generate configuration files
-# - Build and start all services
 ```
 
-**Expected Output:**
-```
+{{< alert title="What Gets Installed" color="info" >}}
+The installer automatically:
+- Detects and fixes snap Docker installations
+- Installs Docker if not present
+- Installs required utilities (jq, etc.)
+- Creates configuration files
+- Builds and starts all services
+{{< /alert >}}
+
+**Expected Installation Output:**
+
+```text
 ✓ Detected snap Docker - automatically replacing with apt version
 ✓ Docker Engine installed successfully
 ✓ System dependencies installed
@@ -125,70 +273,9 @@ sudo bash install_sting.sh
 ✓ Disk space sufficient (XX GB available)
 ```
 
-## AI Model Setup
-
-### Option 1: Ollama (Recommended)
-
-1. Install Ollama from [ollama.com](https://ollama.com)
-2. Pull recommended models:
-   ```bash
-   ollama pull phi3:mini
-   ollama pull deepseek-r1
-   ```
-
-### Option 2: External AI Providers
-
-Configure API keys in the External AI settings for:
-- OpenAI
-- Anthropic Claude
-- Google Gemini
-- Other providers
-
-### Option 3: Legacy Models (Optional)
-
-HuggingFace tokens are only needed for legacy model support (phi3, llama3, zephyr).
-The modern Ollama/External AI stack does not require HuggingFace tokens.
-
-### 2. Configure Token
-
-```bash
-# Interactive token setup
-./setup_hf_token.sh
-
-# Follow prompts to enter your HuggingFace token
-# Token will be securely stored in HashiCorp Vault
-```
-
-**Alternative Manual Setup:**
-```bash
-# Set environment variable
-export HF_TOKEN="hf_your_token_here"
-
-# Add to your shell profile for persistence
-echo 'export HF_TOKEN="hf_your_token_here"' >> ~/.bashrc
-source ~/.bashrc
-```
-
-## Installation Process
-
-### 1. Full Installation
-
-```bash
-# Install STING with debug output
-./install_sting.sh install --debug
-
-# Installation process includes:
-# - Environment validation
-# - Docker network creation
-# - Service image building
-# - Configuration generation
-# - Database initialization
-# - Model preparation
-# - Service startup
-```
-
 **Installation Progress:**
-```
+
+```text
 [1/8] Validating environment...                ✓
 [2/8] Building Docker images...                ✓
 [3/8] Initializing databases...                ✓
@@ -201,44 +288,93 @@ source ~/.bashrc
 🎉 STING Platform installed successfully!
 ```
 
-### 2. Service Startup
+---
 
-```bash
-# Start all services
-./manage_sting.sh start
+## AI Model Setup
 
-# Check service status
-./manage_sting.sh status
+STING supports multiple AI model options. Choose the one that best fits your needs:
 
-# View logs (optional)
-./manage_sting.sh logs
+### Option 1: Ollama (Recommended)
+
+{{< alert title="Recommended for Local Deployment" color="primary" >}}
+Ollama provides local AI models with excellent performance and privacy. This is the recommended option for most users.
+{{< /alert >}}
+
+1. **Install Ollama** from [ollama.com](https://ollama.com)
+2. **Pull recommended models:**
+   ```bash
+   ollama pull phi3:mini
+   ollama pull deepseek-r1
+   ```
+
+### Option 2: External AI Providers
+
+Configure API keys in the External AI settings for cloud-based AI:
+
+```yaml
+Supported Providers:
+  OpenAI:
+    Models: GPT-4, GPT-4-Turbo, GPT-3.5-Turbo
+    Setup: Add API key in Settings → External AI
+
+  Anthropic Claude:
+    Models: Claude 3 Opus, Claude 3 Sonnet, Claude 3 Haiku
+    Setup: Add API key in Settings → External AI
+
+  Google Gemini:
+    Models: Gemini Pro, Gemini Pro Vision
+    Setup: Add API key in Settings → External AI
+
+  Custom Providers:
+    Support: Any OpenAI-compatible API endpoint
+    Config: Custom base URL + API key
 ```
 
-### 3. CLI Installation (Optional)
+**Example Configuration:**
 
 ```bash
-# Install msting command globally
-sudo ln -sf $(pwd)/sting_installer/msting /usr/local/bin/msting
-
-# Verify installation
-msting --help
+# Set via environment variables (optional)
+export OPENAI_API_KEY="sk-..."
+export ANTHROPIC_API_KEY="sk-ant-..."
+export GOOGLE_API_KEY="..."
 ```
 
-## Post-Installation Configuration
+### Option 3: Legacy Models (Optional)
 
-### 1. Access Verification
+{{< alert title="Legacy Support" color="warning" >}}
+HuggingFace tokens are only needed for legacy model support (phi3, llama3, zephyr). The modern Ollama/External AI stack does not require HuggingFace tokens.
+{{< /alert >}}
+
+If you need legacy models:
+
+```bash
+# Interactive token setup
+./setup_hf_token.sh
+
+# Token will be securely stored in HashiCorp Vault
+```
+
+---
+
+## Post-Installation Setup
+
+### Access Verification
+
+{{< alert title="Self-Signed Certificates" color="info" >}}
+STING uses self-signed certificates for local development. You'll need to accept the certificate warning in your browser.
+{{< /alert >}}
 
 **Test Frontend Access:**
+
 ```bash
 # Open browser to frontend
 open https://localhost:3010  # Production
 # or
 open https://localhost:8443  # Development
-
-# Accept self-signed certificate warning
 ```
 
 **Test API Access:**
+
 ```bash
 # Check API health
 curl -k https://localhost:5050/api/auth/health
@@ -246,39 +382,151 @@ curl -k https://localhost:5050/api/auth/health
 # Expected response: {"status": "healthy", "timestamp": "..."}
 ```
 
-### 2. Create First User
+### Create Your First User
 
 1. Navigate to `https://localhost:3010`
-2. Click "Register" to create your first account
-3. Enter email and password
-4. Complete email verification (check Mailpit at `http://localhost:8025`)
-5. Log in to access the dashboard
+2. Click **"Register"** to create your first account
+3. Enter your email and password
+4. Complete email verification
+   - Check Mailpit at `http://localhost:8025` for the verification email
+5. **Log in** to access the dashboard
 
-### 3. Test Chatbot
+### Test the Chatbot
 
-1. Navigate to the Chat interface
-2. Send a test message: "Hello, what is STING?"
+1. Navigate to the **Chat** interface
+2. Send a test message: *"Hello, what is STING?"*
 3. Verify Bee responds appropriately
-4. Check that Phi-3 model is being used (no reasoning artifacts)
+4. Check that your selected model is working
+
+---
+
+## Resource Management
+
+### Docker Resource Allocation
+
+STING Core includes optimized Docker resource limits that work on 8GB RAM systems. Scale up for production workloads.
+
+```yaml
+Minimal Configuration (8GB RAM System):
+  knowledge:
+    memory: 2GB
+    cpu: 1.0 core
+    purpose: Document processing & indexing
+
+  chroma:
+    memory: 1GB
+    cpu: 0.5 cores
+    purpose: Vector search & embeddings
+
+  app:
+    memory: 1GB
+    cpu: 1.0 core
+    purpose: Core API & business logic
+
+  database:
+    memory: 768MB
+    cpu: 0.5 cores
+    purpose: PostgreSQL database
+
+  frontend:
+    memory: 512MB
+    cpu: 0.5 cores
+    purpose: React web interface
+
+  vault:
+    memory: 384MB
+    cpu: 0.25 cores
+    purpose: Secrets management
+
+  redis:
+    memory: 384MB
+    cpu: 0.25 cores
+    purpose: Session & data caching
+
+  messaging:
+    memory: 256MB
+    cpu: 0.25 cores
+    purpose: Message queue & events
+
+Total Allocation (Minimal):
+  Max Memory: ~6.3GB (fits in 8GB system)
+  Max CPU: ~4.25 cores (works on 4-core system)
+  System Buffer: 1.7GB reserved for OS & other processes
+
+---
+
+Recommended Configuration (16GB RAM System):
+  knowledge:
+    memory: 3GB
+    cpu: 1.5 cores
+
+  chroma:
+    memory: 2GB
+    cpu: 1.0 core
+
+  app:
+    memory: 1.5GB
+    cpu: 1.0 core
+
+  database:
+    memory: 1GB
+    cpu: 1.0 core
+
+  frontend:
+    memory: 512MB
+    cpu: 0.5 cores
+
+  vault:
+    memory: 512MB
+    cpu: 0.25 cores
+
+  redis:
+    memory: 512MB
+    cpu: 0.5 cores
+
+  messaging:
+    memory: 256MB
+    cpu: 0.25 cores
+
+Total Allocation (Recommended):
+  Max Memory: ~9.3GB (comfortable on 16GB system)
+  Max CPU: ~5.5 cores
+  System Buffer: 6.7GB for OS, Ollama, and other processes
+```
+
+### Performance Monitoring
+
+```bash
+# Monitor all containers
+docker stats --no-stream
+
+# Check specific service
+docker stats sting-ce-knowledge --no-stream
+```
+
+{{< alert title="When to Scale Up" color="warning" >}}
+Consider upgrading resources when you notice:
+- Container restarts due to memory issues
+- Slow search responses (>5 seconds)
+- Upload timeouts
+- High CPU load consistently above core count
+{{< /alert >}}
+
+---
 
 ## Advanced Configuration
 
-### 1. Custom Model Configuration
+### Custom Model Configuration
 
-**Edit Configuration:**
+Edit the main configuration file to customize model settings:
+
 ```bash
-# Edit main configuration file
 vim conf/config.yml
-
-# Key sections to customize:
-# - llm_service.models: Enable/disable specific models
-# - chatbot.model: Change default model
-# - performance.profile: Adjust for your hardware
 ```
 
 **Example Customization:**
+
 ```yaml
-# conf/config.yml
 llm_service:
   default_model: phi3
   models:
@@ -289,27 +537,31 @@ llm_service:
       enabled: false  # Disable to save memory
 ```
 
-### 2. Database Configuration
+### Database Access
 
-**PostgreSQL Access:**
 ```bash
 # Connect to database directly
 psql -h localhost -p 5433 -U postgres -d sting_app
 
 # View database credentials
-cat /Users/$(whoami)/.sting-ce/env/db.env
+cat ~/.sting-ce/env/db.env
 ```
 
-### 3. SSL Certificate Setup
+### SSL Certificate Setup
 
-**Development (Self-Signed):**
+<details>
+<summary><strong>Development (Self-Signed)</strong></summary>
+
 ```bash
 # Certificates are auto-generated during installation
-# Location: ~/.sting-ce/certs/
 ls -la ~/.sting-ce/certs/
 ```
 
-**Production (Let's Encrypt):**
+</details>
+
+<details>
+<summary><strong>Production (Let's Encrypt)</strong></summary>
+
 ```bash
 # Update configuration for your domain
 vim conf/config.yml
@@ -320,149 +572,21 @@ application:
     domain: "your-domain.com"
     email: "admin@your-domain.com"
 
-# Reinstall with new configuration
+# Restart with new configuration
 ./manage_sting.sh restart
 ```
 
-## Resource Optimization
+</details>
 
-### Docker Resource Allocation
-
-STING includes optimized Docker resource limits designed for the 16GB minimum requirement:
-
-```yaml
-# Optimized allocations (docker-compose.yml)
-knowledge:     3GB memory, 1.5 CPU    # Increased for better performance  
-chroma:        2GB memory, 1.0 CPU    # Vector operations need dedicated resources
-app:           1GB memory, 1.0 CPU    # Core application
-database:      1GB memory, 1.0 CPU    # PostgreSQL
-frontend:      512MB memory, 0.5 CPU  # Nginx + React
-vault:         512MB memory, 0.25 CPU # Secrets management
-messaging:     256MB memory, 0.25 CPU # Message queue
-redis:         512MB memory, 0.5 CPU  # Caching
-```
-
-**Total Resource Usage:**
-- **Reserved**: ~4GB (25% of 16GB minimum)
-- **Maximum**: ~12GB (75% of 16GB minimum)
-- **System Buffer**: 4GB for OS and other processes
-
-### Performance Monitoring
-
-**Check Resource Usage:**
-```bash
-# Monitor all containers
-docker stats --no-stream
-
-# Check specific service
-docker stats sting-ce-knowledge --no-stream
-
-# View resource limits
-docker inspect sting-ce-knowledge | grep -A 10 "Memory"
-```
-
-**Resource Scaling Recommendations:**
-
-**When to increase Knowledge Service (3GB → 4GB):**
-- Processing >1000 documents daily
-- Multiple concurrent users uploading
-- Complex document formats (large PDFs)
-
-**When to increase ChromaDB (2GB → 3GB):**
-- Vector database >10,000 documents  
-- Frequent similarity searches
-- Multiple knowledge bases active
-
-**When to separate ChromaDB:**
-```yaml
-# For deployments >50k documents
-chroma-production:
-  image: chromadb/chroma:latest
-  deploy:
-    resources:
-      limits:
-        memory: 8G
-        cpus: '4.0'
-  volumes:
-    - chroma-production:/chroma/chroma
-```
-
-### Knowledge System Optimization
-
-**ChromaDB Configuration:**
-- Uses `all-MiniLM-L6-v2` model (90MB, 384 dimensions)
-- Efficient semantic search with minimal memory overhead
-- Scales well up to 100,000 documents per collection
-
-**Document Processing:**
-- **Chunking**: 1000-1500 characters with 200-300 overlap
-- **Background Processing**: Queue-based uploads prevent memory spikes  
-- **Incremental Updates**: Only processes changed documents
-- **Batch Uploads**: Process multiple documents efficiently
-
-**Performance Metrics:**
-- **Search Response**: <2 seconds for most queries
-- **Document Upload**: <30 seconds per 10MB file  
-- **Bee Response**: <5 seconds with knowledge context
-- **Memory Growth**: ~1MB per document indexed
-
-### Hardware Upgrade Guidelines
-
-**Memory Pressure Indicators:**
-- Container restarts due to OOM
-- High swap usage (>2GB)
-- Slow search responses (>5 seconds)
-- Upload timeouts
-
-**CPU Bottleneck Signs:**
-- High load average (>CPU cores)
-- Slow document processing
-- Delayed background tasks
-- UI responsiveness issues
-
-**Storage Optimization:**
-- Use SSD for ChromaDB persistence
-- Regular cleanup of old logs
-- Monitor knowledge storage growth
-- Consider compression for archived data
-
-### Scaling Architecture
-
-**Horizontal Scaling Options:**
-
-```yaml
-# Separate knowledge processing workers
-knowledge-worker:
-  build: ./knowledge_service
-  environment:
-    - WORKER_MODE=true
-    - WORKER_QUEUE=document_processing
-  deploy:
-    replicas: 3
-    resources:
-      limits:
-        memory: 2G
-        cpus: '1.0'
-
-# Dedicated search service  
-knowledge-search:
-  build: ./knowledge_service
-  environment:
-    - SERVICE_MODE=search_only
-  deploy:
-    resources:
-      limits:
-        memory: 4G
-        cpus: '2.0'
-```
-
-This optimized configuration ensures STING runs efficiently on minimum specification systems while providing clear upgrade paths for organizational growth.
+---
 
 ## Troubleshooting
 
 ### Common Issues
 
-**1. Docker Service Failures**
+<details>
+<summary><strong>Docker Service Failures</strong></summary>
+
 ```bash
 # Check Docker status
 docker ps -a
@@ -471,21 +595,28 @@ docker ps -a
 killall Docker && open -a Docker
 
 # Check Docker logs
-docker compose -f ~/.sting-ce/docker-compose.yml logs [service]
+docker compose logs [service]
 ```
 
-**2. Port Conflicts**
+</details>
+
+<details>
+<summary><strong>Port Conflicts</strong></summary>
+
 ```bash
 # Check port usage
 lsof -i :3010  # Frontend
 lsof -i :5050  # API
-lsof -i :8086  # LLM Service
 
 # Kill conflicting processes
 sudo kill -9 [PID]
 ```
 
-**3. Model Loading Issues**
+</details>
+
+<details>
+<summary><strong>Model Loading Issues</strong></summary>
+
 ```bash
 # Check model status
 ./sting-llm status
@@ -497,7 +628,11 @@ sudo kill -9 [PID]
 df -h ~/.sting-ce/models
 ```
 
-**4. Memory Issues**
+</details>
+
+<details>
+<summary><strong>Memory Issues</strong></summary>
+
 ```bash
 # Check memory usage
 ./sting-llm memory
@@ -510,30 +645,7 @@ vim conf/config.yml
 ./sting-llm restart
 ```
 
-### Log Analysis
-
-**Service Logs:**
-```bash
-# View all logs
-./manage_sting.sh logs
-
-# View specific service logs
-./manage_sting.sh logs chatbot
-./manage_sting.sh logs llm-gateway
-./manage_sting.sh logs frontend
-
-# Follow logs in real-time
-./manage_sting.sh logs -f
-```
-
-**Log Locations:**
-```
-~/.sting-ce/logs/
-├── manage_sting.log      # Installation and management
-├── llm-gateway.log       # AI model service
-├── chatbot.log           # Bee chatbot service
-└── frontend.log          # React application
-```
+</details>
 
 ### Health Diagnostics
 
@@ -544,12 +656,12 @@ vim conf/config.yml
 # Individual service health
 curl -k https://localhost:5050/api/auth/health
 curl -k http://localhost:8086/health
-curl -k http://localhost:8888/health
 ```
 
 ### Recovery Procedures
 
-**Soft Reset:**
+{{< tabpane text=true >}}
+{{% tab header="**Soft Reset**" %}}
 ```bash
 # Restart all services
 ./manage_sting.sh restart
@@ -557,89 +669,40 @@ curl -k http://localhost:8888/health
 # Regenerate configuration
 ./manage_sting.sh regenerate-config
 ```
-
-**Full Reset:**
+{{% /tab %}}
+{{% tab header="**Full Reset**" %}}
 ```bash
 # Stop services
 ./manage_sting.sh stop
 
 # Remove containers (preserves data)
-docker compose -f ~/.sting-ce/docker-compose.yml down
+docker compose down
 
 # Restart installation
 ./manage_sting.sh start
 ```
-
-**Complete Uninstall:**
+{{% /tab %}}
+{{% tab header="**Complete Uninstall**" %}}
 ```bash
 # Remove all data (DESTRUCTIVE)
 ./manage_sting.sh uninstall --force
 
 # Remove installation directory
 rm -rf ~/.sting-ce
-
-# Reinstall from scratch
-./install_sting.sh install
 ```
+{{% /tab %}}
+{{< /tabpane >}}
 
-## Performance Optimization
-
-### 1. Model Selection
-
-**For Limited Resources (8-16GB RAM):**
-```yaml
-# Use smaller models
-llm_service:
-  default_model: deepseek-1.5b
-  max_loaded_models: 1
-```
-
-**For Ample Resources (32GB+ RAM):**
-```yaml
-# Use enterprise models
-llm_service:
-  default_model: phi3
-  max_loaded_models: 3
-```
-
-### 2. Hardware Acceleration
-
-**macOS (Metal):**
-```yaml
-# Enabled by default
-llm_service:
-  hardware:
-    device: "mps"
-    precision: "fp16"
-```
-
-**Linux (CUDA):**
-```yaml
-# For NVIDIA GPUs
-llm_service:
-  hardware:
-    device: "cuda"
-    precision: "fp16"
-```
-
-### 3. Database Tuning
-
-**PostgreSQL Configuration:**
-```bash
-# Edit PostgreSQL settings
-vim ~/.sting-ce/conf/postgresql.conf
-
-# Key settings for performance:
-# shared_buffers = 256MB
-# effective_cache_size = 1GB
-# work_mem = 4MB
-```
+---
 
 ## Security Hardening
 
-### 1. Production Deployment
+{{< alert title="Production Security" color="danger" >}}
+**Important:** Change default passwords and configure proper SSL certificates before deploying to production!
+{{< /alert >}}
 
-**Change Default Passwords:**
+### Change Default Passwords
+
 ```bash
 # Generate new secrets
 ./manage_sting.sh regenerate-secrets
@@ -648,7 +711,8 @@ vim ~/.sting-ce/conf/postgresql.conf
 vim ~/.sting-ce/env/db.env
 ```
 
-**Firewall Configuration:**
+### Firewall Configuration
+
 ```bash
 # Block unnecessary ports
 sudo ufw enable
@@ -658,9 +722,8 @@ sudo ufw allow 443  # HTTPS
 sudo ufw allow 80   # HTTP (redirect to HTTPS)
 ```
 
-### 2. SSL/TLS Configuration
+### Production SSL Certificates
 
-**Production Certificates:**
 ```bash
 # Install certbot
 sudo apt install certbot
@@ -668,9 +731,21 @@ sudo apt install certbot
 # Generate Let's Encrypt certificate
 sudo certbot certonly --standalone -d your-domain.com
 
-# Update STING configuration
+# Update STING configuration to point to certificate
 vim conf/config.yml
-# Point to /etc/letsencrypt/live/your-domain.com/
 ```
 
-This installation guide provides comprehensive coverage for deploying STING in both development and production environments. Follow the steps carefully and refer to the troubleshooting section if you encounter any issues.
+---
+
+## Next Steps
+
+{{< alert title="You're Ready!" color="success" >}}
+STING is now installed and ready to use! Check out these guides to get started:
+{{< /alert >}}
+
+- [Create Your First Honey Jar](/docs/honey-jars/honey-jar-user-guide/) - Learn how to organize and manage your data
+- [Authentication Setup](/docs/authentication/passwordless-authentication/) - Configure passwordless login
+- [Chat with Bee](/docs/bee-features/bee-conversation-management/) - Explore AI-powered assistance
+- [Performance Tuning](/docs/administration/performance-admin-guide/) - Optimize for your workload
+
+Need help? Visit our [Troubleshooting Guide](/docs/troubleshooting/) or reach out to the community!
