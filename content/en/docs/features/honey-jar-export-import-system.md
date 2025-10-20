@@ -8,9 +8,11 @@ description: >
 
 # Honey Jar Export/Import System
 
+> **Implementation Note:** STING-CE includes basic Honey Jar export and import functionality. Advanced export formats, vector embedding preservation, and automation features described in this guide may require additional configuration or be available in enterprise editions.
+
 ## Overview
 
-STING-CE provides comprehensive export and import capabilities for Honey Jars, enabling knowledge base portability, backup and restore operations, and sharing of curated knowledge collections. The system supports multiple formats including HJX (Honey Jar Exchange), JSON, and TAR archives, with full preservation of metadata, vector embeddings, and document relationships.
+STING-CE provides export and import capabilities for Honey Jars, enabling knowledge base portability, backup and restore operations, and sharing of curated knowledge collections. The system supports multiple formats including HJX (Honey Jar Exchange), JSON, and TAR archives, with full preservation of metadata, vector embeddings, and document relationships.
 
 ## Architecture
 

@@ -8,6 +8,8 @@ description: >
 
 # Honey Combs Connector Design
 
+> **Implementation Note:** STING-CE provides basic data connector functionality. Advanced connector patterns and features described in this guide may require custom development or be available in enterprise editions.
+
 ## Executive Summary
 
 This document provides the detailed implementation design for Honey Combs - the data source configuration templates that enable rapid, secure connectivity within STING. It covers the technical architecture, UI/UX integration, and implementation roadmap.

@@ -8,6 +8,8 @@ description: >
 
 # Dashboard Access Guide
 
+> **Implementation Note:** STING-CE includes basic dashboard capabilities when the observability stack is enabled. Advanced dashboard features and integrations described in this guide may require additional configuration or be available in enterprise editions.
+
 STING provides flexible options for viewing system monitoring and analytics dashboards. This guide explains how to access and configure dashboard functionality.
 
 ## Dashboard Types
