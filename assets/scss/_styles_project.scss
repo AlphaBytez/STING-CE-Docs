@@ -83,12 +83,52 @@ pre {
   border: 1px solid rgba(234, 179, 8, 0.3);
   border-radius: 0.5rem;
   padding: 1rem;
+  position: relative;
 }
 
 pre code {
   background: transparent !important;
   color: #f1f5f9 !important;
   padding: 0 !important;
+}
+
+/* Code copy button styling */
+.highlight-copy-btn,
+.td-content .highlight .copy-button,
+button[data-clipboard-text] {
+  background: rgba(234, 179, 8, 0.1) !important;
+  border: 1px solid rgba(234, 179, 8, 0.3) !important;
+  color: #eab308 !important;
+  transition: all 0.2s ease;
+}
+
+.highlight-copy-btn:hover,
+.td-content .highlight .copy-button:hover,
+button[data-clipboard-text]:hover {
+  background: rgba(234, 179, 8, 0.2) !important;
+  border-color: #eab308 !important;
+  color: #fbbf24 !important;
+}
+
+/* Copy button tooltip/popup styling */
+.highlight-copy-btn::after,
+.highlight-copy-btn[aria-label]::after,
+button[data-clipboard-text]::after,
+.tooltip,
+.td-content .highlight .copy-button-tooltip {
+  background: rgba(234, 179, 8, 0.95) !important;
+  color: #0a0a0a !important;
+  border: 1px solid #fbbf24 !important;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}
+
+/* Tooltip arrow if present */
+.tooltip::before,
+.td-content .highlight .copy-button-tooltip::before {
+  border-top-color: #eab308 !important;
 }
 
 /* Inline code with backticks */
