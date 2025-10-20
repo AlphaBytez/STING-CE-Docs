@@ -1,7 +1,7 @@
 ---
 title: "Domain Configuration"
 linkTitle: "Domain Configuration"
-weight: 10
+weight: 20
 description: >
   Guide for configuring custom domains in STING with centralized management.
 ---

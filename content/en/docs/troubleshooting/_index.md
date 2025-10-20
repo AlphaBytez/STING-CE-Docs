@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting"
 linkTitle: "Troubleshooting"
-weight: 8
+weight: 110
 description: >
   Common issues, solutions, and debugging guides
 ---

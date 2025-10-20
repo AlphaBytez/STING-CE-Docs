@@ -1,7 +1,7 @@
 ---
 title: "STING CE Architecture Guide"
 linkTitle: "STING CE Architecture Guide"
-weight: 10
+weight: 80
 description: >
   Comprehensive overview of STING-CE system architecture, installation process, and configuration management.
 ---

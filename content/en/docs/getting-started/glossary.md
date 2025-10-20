@@ -1,7 +1,7 @@
 ---
 title: "Glossary"
 linkTitle: "Glossary"
-weight: 10
+weight: 90
 description: >
   STING terminology and definitions - the Hive Dictionary.
 ---

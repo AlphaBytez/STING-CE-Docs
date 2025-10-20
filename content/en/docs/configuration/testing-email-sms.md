@@ -1,7 +1,7 @@
 ---
 title: "Testing Email and SMS"
 linkTitle: "Testing Email and SMS"
-weight: 10
+weight: 100
 description: >
   Guide for testing email and SMS capabilities in STING development using Mailpit and SMS Mock Service.
 ---

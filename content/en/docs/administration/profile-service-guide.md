@@ -1,7 +1,7 @@
 ---
 title: "Profile Service Guide"
 linkTitle: "Profile Service Guide"
-weight: 10
+weight: 40
 description: >
   Comprehensive guide for the STING-CE Profile Service microservice for user profile management.
 ---

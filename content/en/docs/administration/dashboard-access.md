@@ -1,7 +1,7 @@
 ---
 title: "Dashboard Access Guide"
 linkTitle: "Dashboard Access"
-weight: 10
+weight: 70
 description: >
   Configure and access system monitoring dashboards in STING.
 ---

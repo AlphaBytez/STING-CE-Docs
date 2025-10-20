@@ -1,7 +1,7 @@
 ---
 title: "Performance Quick Reference"
 linkTitle: "Performance Quick Reference"
-weight: 10
+weight: 70
 description: >
   Quick reference guide for STING performance commands and common fixes.
 ---

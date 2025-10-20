@@ -1,7 +1,7 @@
 ---
 title: "Deployment"
 linkTitle: "Deployment"
-weight: 6
+weight: 100
 description: >
   Deployment strategies and production setup
 ---

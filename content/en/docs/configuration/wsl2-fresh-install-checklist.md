@@ -1,7 +1,7 @@
 ---
 title: "WSL2 Fresh Install Checklist"
 linkTitle: "WSL2 Fresh Install Checklist"
-weight: 10
+weight: 90
 description: >
   Comprehensive checklist for ensuring clean STING installations on WSL2 and avoiding common pitfalls.
 ---

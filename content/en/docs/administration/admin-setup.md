@@ -1,7 +1,7 @@
 ---
 title: "Admin Setup"
 linkTitle: "Admin Setup"
-weight: 10
+weight: 20
 description: >
   Comprehensive guide for creating and managing admin users in STING.
 ---

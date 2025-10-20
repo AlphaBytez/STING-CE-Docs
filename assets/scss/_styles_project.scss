@@ -131,36 +131,53 @@ button[data-clipboard-text]::after,
   border-top-color: #eab308 !important;
 }
 
-/* Inline code with backticks */
+/* Inline code with backticks - improved readability */
 code {
-  background: rgba(234, 179, 8, 0.1) !important;
-  color: #eab308 !important;
-  padding: 0.2em 0.4em !important;
-  border-radius: 0.25rem !important;
+  background: rgba(234, 179, 8, 0.15) !important;
+  color: #fbbf24 !important;
+  padding: 0.2em 0.5em !important;
+  border-radius: 0.375rem !important;
   font-size: 0.9em !important;
-  border: 1px solid rgba(234, 179, 8, 0.2) !important;
+  border: 1px solid rgba(234, 179, 8, 0.3) !important;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace !important;
 }
 
 /* Ensure code inside pre blocks doesn't get inline code styling */
 pre code {
   border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  color: #e2e8f0 !important;
 }
 
 /* Fix numbered list line number backgrounds */
 .td-content ol li::marker,
 .td-content ul li::marker {
-  color: #eab308;
+  color: #fbbf24;
+  font-weight: 600;
 }
 
 /* Remove white backgrounds from list items */
 .td-content li {
   background: transparent !important;
+  margin-bottom: 0.5rem;
 }
 
+/* Bold text in list items - better visibility */
+.td-content li strong,
+.td-content li b {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+/* Code blocks - improved readability with better contrast */
 .td-content .highlight {
-  background: rgba(20, 20, 20, 0.9) !important;
-  border: 1px solid rgba(234, 179, 8, 0.3);
+  background: rgba(30, 30, 35, 0.95) !important;
+  border: 1px solid rgba(234, 179, 8, 0.25);
   border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Line numbers in code blocks */
@@ -216,6 +233,36 @@ pre code {
   background: rgba(255, 255, 255, 0.08);
   border-color: #eab308;
   box-shadow: 0 0 0 0.2rem rgba(234, 179, 8, 0.25);
+}
+
+/* Left sidebar search - enhanced styling */
+.td-sidebar .td-search {
+  margin-bottom: 1.5rem;
+  padding: 0.75rem;
+  background: rgba(234, 179, 8, 0.08);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.td-sidebar .td-search-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  color: #f1f5f9;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.9rem;
+}
+
+.td-sidebar .td-search-input:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 0.15rem rgba(234, 179, 8, 0.2);
+  outline: none;
+}
+
+.td-sidebar .td-search-input::placeholder {
+  color: rgba(241, 245, 249, 0.5);
 }
 
 /* Sidebar navigation links */

@@ -1,7 +1,7 @@
 ---
 title: "Installation Domain Guide"
 linkTitle: "Installation Domain Guide"
-weight: 10
+weight: 30
 description: >
   Guide for configuring and using unique local domains during STING installation.
 ---

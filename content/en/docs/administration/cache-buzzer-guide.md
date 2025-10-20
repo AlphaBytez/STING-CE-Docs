@@ -1,7 +1,7 @@
 ---
 title: "Cache Buzzer Guide"
 linkTitle: "Cache Buzzer Guide"
-weight: 10
+weight: 50
 description: >
   Critical administrative tool for ensuring Docker containers are truly rebuilt from scratch.
 ---

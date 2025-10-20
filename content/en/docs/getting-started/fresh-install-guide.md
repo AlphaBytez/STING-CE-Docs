@@ -1,7 +1,7 @@
 ---
 title: "Fresh Install Guide"
 linkTitle: "Fresh Install Guide"
-weight: 10
+weight: 20
 description: >
   Complete guide for fresh STING-CE installation.
 ---

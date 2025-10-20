@@ -1,7 +1,7 @@
 ---
 title: "Hardware Acceleration Guide"
 linkTitle: "Hardware Acceleration Guide"
-weight: 10
+weight: 60
 description: >
   Guide for configuring hardware acceleration for faster LLM inference in STING-CE.
 ---

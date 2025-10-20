@@ -1,7 +1,7 @@
 ---
 title: "Mobile Optimization Guide"
 linkTitle: "Mobile Optimization Guide"
-weight: 10
+weight: 60
 description: >
   Best practices for ensuring STING works seamlessly across all device sizes with mobile optimization.
 ---

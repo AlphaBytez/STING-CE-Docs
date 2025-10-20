@@ -1,7 +1,7 @@
 ---
 title: "Performance Admin Guide"
 linkTitle: "Performance Admin Guide"
-weight: 10
+weight: 30
 description: >
   Comprehensive guide for configuring, monitoring, and optimizing STING performance.
 ---

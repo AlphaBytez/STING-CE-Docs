@@ -1,7 +1,7 @@
 ---
 title: "Getting Started"
 linkTitle: "Getting Started"
-weight: 1
+weight: 10
 description: >
   Get up and running with STING quickly.
 ---

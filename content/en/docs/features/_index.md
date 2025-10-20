@@ -1,7 +1,7 @@
 ---
 title: "Features"
 linkTitle: "Features"
-weight: 3
+weight: 80
 description: >
   Detailed documentation for STING's features
 ---

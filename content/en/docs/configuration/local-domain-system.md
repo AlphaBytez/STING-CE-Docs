@@ -1,7 +1,7 @@
 ---
 title: "Local Domain System"
 linkTitle: "Local Domain System"
-weight: 10
+weight: 40
 description: >
   Guide for using STING's custom local domain system with .hive TLD for WebAuthn compatibility.
 ---

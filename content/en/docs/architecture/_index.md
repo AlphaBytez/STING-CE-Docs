@@ -1,7 +1,7 @@
 ---
 title: "Architecture"
 linkTitle: "Architecture"
-weight: 4
+weight: 70
 description: >
   System architecture and technical specifications for STING platform components, design patterns, and infrastructure.
 ---

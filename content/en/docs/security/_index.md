@@ -1,7 +1,7 @@
 ---
 title: "Security"
 linkTitle: "Security"
-weight: 5
+weight: 90
 description: >
   Authentication, authorization, and security best practices
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Mac Optimized Setup"
 linkTitle: "Mac Optimized Setup"
-weight: 10
+weight: 50
 description: >
   Guide for optimizing STING-CE on macOS with Apple Silicon GPU acceleration.
 ---
