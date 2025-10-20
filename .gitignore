@@ -1,0 +1,27 @@
+# Hugo build outputs
+public/
+resources/_gen/
+.hugo_build.lock
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Hugo cache
+/.cache/
+/resources/
+
+# Temporary files
+*.tmp
+*.bak

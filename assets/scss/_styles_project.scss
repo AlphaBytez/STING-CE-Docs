@@ -1,0 +1,719 @@
+/*
+STING Design System - Custom Styles for Documentation Site
+Adds STING-specific styling on top of Docsy theme
+*/
+
+/* Force dark mode globally */
+html, body {
+  background-color: #000000 !important;
+  color: #f1f5f9 !important;
+}
+
+body {
+  background: #000000 !important;
+}
+
+/* Override any light mode styles */
+.td-default,
+.td-home,
+.td-outer,
+.td-main {
+  background-color: #000000 !important;
+  color: #f1f5f9 !important;
+}
+
+/* Glass Morphism Effects */
+.td-sidebar,
+.td-navbar {
+  background: rgba(15, 15, 15, 0.95) !important;
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.td-box {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+/* Cards with STING glass effect */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(234, 179, 8, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(234, 179, 8, 0.15);
+}
+
+/* Button styling with STING yellow */
+.btn-primary {
+  background-color: #eab308;
+  border-color: #eab308;
+  color: #0a0a0a;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  background-color: #d97706;
+  border-color: #d97706;
+  color: #0a0a0a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);
+}
+
+.btn-primary:active {
+  background-color: #b45309;
+  border-color: #b45309;
+}
+
+/* Code blocks with STING styling */
+pre {
+  background: rgba(20, 20, 20, 0.9) !important;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+pre code {
+  background: transparent !important;
+  color: #f1f5f9 !important;
+  padding: 0 !important;
+}
+
+/* Inline code with backticks */
+code {
+  background: rgba(234, 179, 8, 0.1) !important;
+  color: #eab308 !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: 0.25rem !important;
+  font-size: 0.9em !important;
+  border: 1px solid rgba(234, 179, 8, 0.2) !important;
+}
+
+/* Ensure code inside pre blocks doesn't get inline code styling */
+pre code {
+  border: none !important;
+}
+
+/* Fix numbered list line number backgrounds */
+.td-content ol li::marker,
+.td-content ul li::marker {
+  color: #eab308;
+}
+
+/* Remove white backgrounds from list items */
+.td-content li {
+  background: transparent !important;
+}
+
+.td-content .highlight {
+  background: rgba(20, 20, 20, 0.9) !important;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  border-radius: 0.5rem;
+}
+
+/* Line numbers in code blocks */
+.td-content .highlight .chroma .ln,
+.td-content .highlight .chroma .lnt {
+  background: transparent !important;
+  color: #64748b;
+}
+
+/* Navbar logo styling */
+.td-navbar .navbar-brand {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #f1f5f9 !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Add STING logo before the brand text */
+.td-navbar .navbar-brand::before {
+  content: '';
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  margin-right: 12px;
+  background-image: url('/docs/images/sting-logo.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.3)) drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+}
+
+/* Hide any default emoji or icon */
+.td-navbar .navbar-brand .td-navbar__logo,
+.td-navbar .navbar-brand > span:first-child {
+  display: none;
+}
+
+.td-navbar .navbar-brand svg,
+.td-navbar .navbar-brand img {
+  height: 32px;
+  margin-right: 0.5rem;
+}
+
+/* Search box styling */
+.td-search-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f1f5f9;
+}
+
+.td-search-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #eab308;
+  box-shadow: 0 0 0 0.2rem rgba(234, 179, 8, 0.25);
+}
+
+/* Sidebar navigation links */
+.td-sidebar-nav .td-sidebar-link {
+  color: #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+.td-sidebar-nav .td-sidebar-link:hover {
+  color: #eab308;
+  background: rgba(234, 179, 8, 0.05);
+}
+
+.td-sidebar-nav .td-sidebar-link.active {
+  color: #eab308;
+  font-weight: 600;
+  border-left: 3px solid #eab308;
+  background: rgba(234, 179, 8, 0.08);
+}
+
+/* Table of contents (TOC) - Right sidebar */
+.td-toc {
+  border-left: 2px solid rgba(234, 179, 8, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.td-toc a {
+  color: #f1f5f9 !important;
+  transition: color 0.2s ease;
+}
+
+.td-toc a:hover,
+.td-toc a.active {
+  color: #eab308 !important;
+  font-weight: 500;
+}
+
+.td-toc .td-toc__heading {
+  color: #eab308 !important;
+}
+
+/* Alerts/Callouts with STING colors */
+.alert-info {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.3);
+  color: #06b6d4;
+}
+
+.alert-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+}
+
+.alert-success {
+  background: rgba(93, 155, 99, 0.1);
+  border-color: rgba(93, 155, 99, 0.3);
+  color: #5d9b63;
+}
+
+.alert-danger {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+/* Page title with STING accent */
+.td-content h1 {
+  color: #f1f5f9;
+  border-bottom: 3px solid #eab308;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Last updated date styling */
+.page-meta-lastmod {
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+
+.page-meta-lastmod p {
+  color: #94a3b8 !important;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-meta-lastmod i {
+  color: #eab308;
+  margin-right: 0.5rem;
+}
+
+.page-meta-lastmod time {
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+/* Mobile styling for last updated date */
+@media (max-width: 768px) {
+  .page-meta-lastmod {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .page-meta-lastmod p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Table styling with STING colors */
+.td-content table {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(234, 179, 8, 0.3) !important;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.td-content table thead {
+  background: rgba(234, 179, 8, 0.1) !important;
+}
+
+.td-content table th {
+  color: #eab308 !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 1rem !important;
+  border-bottom: 2px solid rgba(234, 179, 8, 0.3) !important;
+  background: transparent !important;
+}
+
+.td-content table td {
+  color: #f1f5f9 !important;
+  padding: 0.75rem 1rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: transparent !important;
+}
+
+.td-content table tbody tr:hover {
+  background: rgba(234, 179, 8, 0.05) !important;
+}
+
+.td-content table tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar (WebKit browsers) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(234, 179, 8, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(234, 179, 8, 0.5);
+}
+
+/* Footer styling */
+.td-footer {
+  background: rgba(0, 0, 0, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+.td-footer a {
+  color: #eab308;
+}
+
+.td-footer a:hover {
+  color: #d97706;
+}
+
+/* Version dropdown */
+.td-version-banner {
+  background: rgba(234, 179, 8, 0.1);
+  border-left: 4px solid #eab308;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  background: transparent;
+}
+
+.breadcrumb-item.active {
+  color: #eab308;
+}
+
+/* Homepage hero section */
+.td-home {
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+/* STING logo glow effect for better visibility on black background */
+img[src*="sting-logo"] {
+  filter: drop-shadow(0 0 12px rgba(234, 179, 8, 0.4)) drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
+}
+
+/* ============================================
+   MOBILE RESPONSIVE ENHANCEMENTS
+   ============================================ */
+
+/* Hide desktop navigation on mobile for cleaner UI */
+@media (max-width: 768px) {
+  /* Hide desktop navigation links on mobile */
+  .td-navbar .navbar-nav {
+    display: none !important;
+  }
+
+  /* Ensure mobile navbar toggler is visible */
+  .td-navbar .navbar-toggler {
+    display: block !important;
+  }
+
+  /* Make navbar more compact on mobile */
+  .td-navbar {
+    min-height: 60px !important;
+  }
+
+  /* Hide desktop search bar on mobile, show mobile version */
+  .td-search-box {
+    width: 100% !important;
+  }
+}
+
+/* Mobile-first improvements for documentation */
+@media (max-width: 768px) {
+  /* Improved readability on mobile */
+  .td-content {
+    font-size: 16px !important;
+    line-height: 1.6;
+    padding: 1rem !important;
+  }
+
+  /* Headings adjustments for mobile */
+  .td-content h1 {
+    font-size: 28px !important;
+    margin-top: 1rem !important;
+  }
+
+  .td-content h2 {
+    font-size: 24px !important;
+    margin-top: 1.5rem !important;
+  }
+
+  .td-content h3 {
+    font-size: 20px !important;
+  }
+
+  .td-content h4 {
+    font-size: 18px !important;
+  }
+
+  /* Sidebar adjustments */
+  .td-sidebar {
+    max-width: 85% !important;
+  }
+
+  .td-sidebar-nav {
+    padding: 1rem !important;
+  }
+
+  /* Table of contents on mobile */
+  .td-toc {
+    position: static !important;
+    width: 100% !important;
+    padding: 1rem !important;
+    margin: 1rem 0 !important;
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    border-radius: 0.5rem;
+  }
+
+  /* Code blocks on mobile - ensure horizontal scroll */
+  pre {
+    font-size: 14px !important;
+    padding: 0.75rem !important;
+    overflow-x: auto !important;
+    max-width: 100%;
+  }
+
+  pre code {
+    white-space: pre !important;
+    word-wrap: normal !important;
+  }
+
+  /* Inline code */
+  code {
+    font-size: 0.85em !important;
+    word-break: break-word;
+  }
+
+  /* Tables - horizontal scroll on mobile */
+  .td-content table {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Cards and boxes */
+  .card, .td-box {
+    padding: 1rem !important;
+    margin: 1rem 0 !important;
+  }
+
+  /* Navigation improvements */
+  .td-navbar {
+    padding: 0.5rem 1rem !important;
+  }
+
+  /* Center navbar brand on mobile */
+  .td-navbar .navbar-brand {
+    font-size: 20px !important;
+    margin: 0 auto !important;
+    justify-content: center !important;
+  }
+
+  /* Center navbar container on mobile */
+  .td-navbar .container,
+  .td-navbar .container-fluid {
+    justify-content: center !important;
+  }
+
+  /* Search bar on mobile */
+  .td-search-input {
+    font-size: 16px !important;
+    padding: 0.5rem !important;
+  }
+
+  /* Buttons - larger touch targets */
+  .btn {
+    min-height: 44px !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 16px !important;
+  }
+
+  /* Breadcrumbs */
+  .breadcrumb {
+    font-size: 14px !important;
+    padding: 0.5rem !important;
+  }
+
+  /* Footer */
+  .td-footer {
+    padding: 1rem !important;
+    font-size: 14px !important;
+  }
+
+  /* Alert boxes */
+  .alert {
+    padding: 0.75rem !important;
+    margin: 1rem 0 !important;
+    font-size: 15px !important;
+  }
+
+  /* Lists */
+  .td-content ul, .td-content ol {
+    padding-left: 1.5rem !important;
+  }
+
+  .td-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Images */
+  .td-content img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  /* Version dropdown */
+  .td-version-banner {
+    padding: 0.75rem !important;
+    font-size: 14px !important;
+  }
+
+  /* Pagination */
+  .td-page-nav {
+    flex-direction: column !important;
+  }
+
+  .td-page-nav a {
+    width: 100% !important;
+    margin: 0.5rem 0 !important;
+    text-align: center !important;
+  }
+}
+
+/* Very small mobile devices (< 480px) */
+@media (max-width: 480px) {
+  .td-content {
+    font-size: 15px !important;
+    padding: 0.75rem !important;
+  }
+
+  .td-content h1 {
+    font-size: 24px !important;
+  }
+
+  .td-content h2 {
+    font-size: 20px !important;
+  }
+
+  .td-content h3 {
+    font-size: 18px !important;
+  }
+
+  pre {
+    font-size: 13px !important;
+    padding: 0.5rem !important;
+  }
+
+  .card, .td-box {
+    padding: 0.75rem !important;
+  }
+
+  /* Sidebar even narrower on very small screens */
+  .td-sidebar {
+    max-width: 90% !important;
+  }
+}
+
+/* Tablet landscape (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .td-content {
+    font-size: 17px !important;
+  }
+
+  .td-sidebar {
+    max-width: 280px !important;
+  }
+
+  .td-toc {
+    max-width: 250px !important;
+  }
+}
+
+/* Improve touch targets on all mobile devices */
+@media (max-width: 768px) {
+  /* Navigation links */
+  .td-sidebar-nav a,
+  .td-navbar a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem !important;
+  }
+
+  /* Dropdown menus */
+  .dropdown-item {
+    min-height: 44px !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  /* Search icon */
+  .td-search .btn {
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+}
+
+/* Fix horizontal overflow on mobile */
+@media (max-width: 768px) {
+  body, html {
+    overflow-x: hidden !important;
+  }
+
+  .td-outer, .td-main, .td-content {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Ensure content doesn't push beyond viewport */
+  .container, .container-fluid {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* Improve code snippet copy button on mobile */
+@media (max-width: 768px) {
+  .highlight-copy-btn {
+    padding: 0.5rem !important;
+    font-size: 14px !important;
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Better spacing for mobile navigation */
+@media (max-width: 768px) {
+  .td-sidebar-nav__section {
+    margin-bottom: 1rem !important;
+  }
+
+  .td-sidebar-nav__section-title {
+    font-size: 16px !important;
+    padding: 0.75rem 1rem !important;
+  }
+}
+
+/* Mobile-friendly alerts and callouts */
+@media (max-width: 768px) {
+  .pageinfo {
+    padding: 1rem !important;
+    margin: 1rem 0 !important;
+    font-size: 15px !important;
+  }
+
+  .pageinfo-primary,
+  .pageinfo-warning,
+  .pageinfo-info {
+    border-left-width: 4px !important;
+  }
+}
+
+/* Improve form inputs on mobile (prevents zoom on iOS) */
+@media (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}

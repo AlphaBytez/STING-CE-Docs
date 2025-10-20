@@ -1,0 +1,17 @@
+{{/* Inherit from Docsy docs page layout */}}
+{{ define "main" }}
+  <div class="td-content">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+
+    {{/* Add last updated date */}}
+    <div class="mt-4 pt-3" style="border-top: 1px solid rgba(255, 255, 255, 0.1);">
+      {{ partial "page-meta-lastmod.html" . }}
+    </div>
+
+    {{ if (.Site.Params.ui.feedback.enable | and (.Page.Params.feedback) | or .Page.Params.feedback) }}
+      {{ partial "feedback.html" .Page }}
+    {{ end }}
+    {{ partial "pager.html" . }}
+  </div>
+{{ end }}

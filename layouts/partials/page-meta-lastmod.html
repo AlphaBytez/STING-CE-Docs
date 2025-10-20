@@ -1,0 +1,9 @@
+{{/* Display last updated date from Git */}}
+{{ if .GitInfo }}
+<div class="page-meta-lastmod">
+  <p class="text-muted small">
+    <i class="fa fa-calendar-alt"></i>
+    Last updated: <time datetime="{{ .GitInfo.AuthorDate.Format "2006-01-02" }}">{{ .GitInfo.AuthorDate.Format "January 2, 2006" }}</time>
+  </p>
+</div>
+{{ end }}

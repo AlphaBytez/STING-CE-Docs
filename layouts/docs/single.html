@@ -1,0 +1,20 @@
+{{ define "main" }}
+{{ with .Content }}
+{{ . }}
+{{ end }}
+
+{{/* Add last updated date at the bottom of each doc page */}}
+<div class="mt-4 pt-3" style="border-top: 1px solid rgba(255, 255, 255, 0.1);">
+  {{ partial "page-meta-lastmod.html" . }}
+</div>
+
+{{ if (and (not .Params.hide_feedback) (.Site.Params.ui.feedback.enable) (.Site.GoogleAnalytics)) }}
+{{ partial "feedback.html" .Site.Params.ui.feedback }}
+<br />
+{{ end }}
+{{ if (.Site.DisqusShortname) }}
+<br />
+{{ partial "disqus-comment.html" . }}
+{{ end }}
+{{ partial "page-meta-links.html" . }}
+{{ end }}

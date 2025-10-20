@@ -1,0 +1,154 @@
+{{ define "main" }}
+<div class="td-content" style="padding: 2rem 3rem; max-width: 1400px; margin: 0 auto;">
+  <div class="text-center py-5 px-3" style="background: linear-gradient(135deg, rgba(234, 179, 8, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%); border-radius: 1rem; margin: 2rem 0;">
+    <img src="{{ "images/sting-logo.webp" | relURL }}" alt="STING Logo" style="height: 120px; margin-bottom: 2rem;">
+    <h1 class="display-4 font-weight-bold" style="color: #eab308;">STING Documentation</h1>
+    <p class="lead" style="font-size: 1.5rem; color: #f1f5f9; margin-top: 1rem;">
+      Secure Trusted Intelligence and Networking Guardian
+    </p>
+    <p class="lead" style="font-size: 1.25rem; color: #cbd5e1; margin-top: 0.5rem;">
+      Bee Smart. Bee Secure.
+    </p>
+    <div class="mt-4">
+      <a class="btn btn-lg btn-primary me-3 mb-3" href="{{ "docs/" | relURL }}" style="background: #eab308; border-color: #eab308; color: #0a0a0a; font-weight: 600;">
+        Documentation <i class="fas fa-arrow-right ms-2"></i>
+      </a>
+      <a class="btn btn-lg btn-outline-light mb-3" href="{{ "api/" | relURL }}">
+        API Reference <i class="fas fa-code ms-2"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12 mb-4">
+      <div class="alert alert-dark" style="background: rgba(234, 179, 8, 0.1); border-color: #eab308; border-left: 4px solid #eab308;">
+        <p class="lead mb-0" style="color: #f1f5f9;">
+          STING is a powerful, self-hosted security and data intelligence platform that combines advanced threat detection, secure data management, and AI-powered analysis capabilities.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
+    <div class="col">
+      <div class="card h-100" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 0.75rem;">
+        <div class="card-body text-center">
+          <i class="fas fa-rocket fa-3x mb-3" style="color: #eab308;"></i>
+          <h5 class="card-title" style="color: #f1f5f9;">Getting Started</h5>
+          <p class="card-text" style="color: #cbd5e1;">New to STING? Start here to install and configure your instance.</p>
+          <a href="{{ "docs/getting-started/" | relURL }}" class="btn btn-sm btn-outline-warning">Get Started</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 0.75rem;">
+        <div class="card-body text-center">
+          <i class="fas fa-book fa-3x mb-3" style="color: #eab308;"></i>
+          <h5 class="card-title" style="color: #f1f5f9;">Guides</h5>
+          <p class="card-text" style="color: #cbd5e1;">Step-by-step tutorials for common tasks and advanced features.</p>
+          <a href="{{ "docs/guides/" | relURL }}" class="btn btn-sm btn-outline-warning">View Guides</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 0.75rem;">
+        <div class="card-body text-center">
+          <i class="fas fa-code fa-3x mb-3" style="color: #eab308;"></i>
+          <h5 class="card-title" style="color: #f1f5f9;">API Reference</h5>
+          <p class="card-text" style="color: #cbd5e1;">Complete API documentation with examples and code snippets.</p>
+          <a href="{{ "api/" | relURL }}" class="btn btn-sm btn-outline-warning">API Docs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+    <div class="col">
+      <div class="card h-100" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+        <div class="card-body">
+          <i class="fas fa-lock fa-2x mb-3" style="color: #eab308;"></i>
+          <h6 class="card-title" style="color: #f1f5f9;">Passwordless Authentication</h6>
+          <p class="card-text small" style="color: #94a3b8;">WebAuthn, passkeys, and biometric support for secure access.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+        <div class="card-body">
+          <i class="fas fa-database fa-2x mb-3" style="color: #eab308;"></i>
+          <h6 class="card-title" style="color: #f1f5f9;">Honey Jars</h6>
+          <p class="card-text small" style="color: #94a3b8;">Secure data containers with advanced access controls.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+        <div class="card-body">
+          <i class="fas fa-robot fa-2x mb-3" style="color: #eab308;"></i>
+          <h6 class="card-title" style="color: #f1f5f9;">Bee AI Assistant</h6>
+          <p class="card-text small" style="color: #94a3b8;">AI-powered assistance and intelligent agents.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5 pt-4" style="border-top: 1px solid rgba(255, 255, 255, 0.1);">
+    <div class="col-md-4 text-center mb-4">
+      <i class="fab fa-github fa-3x mb-3" style="color: #cbd5e1;"></i>
+      <h5 style="color: #f1f5f9;">Contributions welcome!</h5>
+      <p style="color: #94a3b8;">We welcome Pull Requests on <strong>GitHub</strong>. New contributors are always welcome!</p>
+      <a href="https://github.com/AlphaBytez/STING-CE-Public" class="btn btn-outline-light btn-sm">View on GitHub</a>
+    </div>
+    <div class="col-md-4 text-center mb-4">
+      <i class="fas fa-envelope fa-3x mb-3" style="color: #cbd5e1;"></i>
+      <h5 style="color: #f1f5f9;">Get in touch!</h5>
+      <p style="color: #94a3b8;">Questions? Email us at <strong>olliec@alphabytez.dev</strong></p>
+      <a href="mailto:olliec@alphabytez.dev" class="btn btn-outline-light btn-sm">Send Email</a>
+    </div>
+    <div class="col-md-4 text-center mb-4">
+      <i class="fas fa-comments fa-3x mb-3" style="color: #cbd5e1;"></i>
+      <h5 style="color: #f1f5f9;">Join the discussion!</h5>
+      <p style="color: #94a3b8;">For discussions and questions, join us on <strong>GitHub Discussions</strong></p>
+      <a href="https://github.com/AlphaBytez/STING-CE-Public/discussions" class="btn btn-outline-light btn-sm">Discussions</a>
+    </div>
+  </div>
+</div>
+
+<style>
+@media (max-width: 768px) {
+  .td-content {
+    padding: 1rem 1.5rem !important;
+  }
+
+  /* Center all content on mobile */
+  .row {
+    text-align: center !important;
+  }
+
+  .card-body {
+    text-align: center !important;
+  }
+
+  /* Center text in sections */
+  .col, .col-md-4, .col-md-3 {
+    text-align: center !important;
+  }
+
+  /* Ensure buttons are centered */
+  .btn {
+    display: inline-block !important;
+    margin: 0.5rem auto !important;
+  }
+
+  /* Center alert text on mobile */
+  .alert-dark {
+    text-align: center !important;
+  }
+
+  /* Center card text content */
+  .card-text, .card-title {
+    text-align: center !important;
+  }
+}
+</style>
+{{ end }}

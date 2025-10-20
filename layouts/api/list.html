@@ -1,0 +1,10 @@
+{{/* Inherit from Docsy docs section layout */}}
+{{ define "main" }}
+  <div class="td-content">
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}
+      {{ . }}
+    {{ end }}
+    {{ partial "docs/section-index.html" . }}
+  </div>
+{{ end }}
