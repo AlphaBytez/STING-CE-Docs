@@ -1,0 +1,7 @@
+{{- $.Scratch.Add "index" slice -}}
+{{- range where site.RegularPages "Type" "in" site.Params.offlineSearchSections -}}
+  {{- if ne .Params.private true -}}
+    {{- $.Scratch.Add "index" (dict "title" .Title "href" .Permalink "content" (.Plain | htmlUnescape) "description" .Params.description) -}}
+  {{- end -}}
+{{- end -}}
+{{- $.Scratch.Get "index" | jsonify -}}

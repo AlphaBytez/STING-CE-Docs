@@ -59,6 +59,7 @@ enableGitInfo = true
   offlineSearch = true
   offlineSearchSummaryLength = 200
   offlineSearchMaxResults = 25
+  offlineSearchSections = ["docs", "api", "about"]
 
   # Enable version dropdown
   version_menu = "Versions"

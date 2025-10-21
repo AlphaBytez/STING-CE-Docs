@@ -1,7 +1,7 @@
 ---
 title: "Authentication"
 linkTitle: "Authentication"
-weight: 5
+weight: 20
 description: >
   Comprehensive guides for implementing and using authentication in STING, including Kratos integration, WebAuthn/passkeys, and testing procedures.
 ---
