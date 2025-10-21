@@ -76,7 +76,7 @@ Docker:
 
 #### AI Model Requirements (Separate)
 
-{{< alert title="AI Models Run Separately" color="primary" >}}
+{{< alert title="AI Models Run Separately" color="info" >}}
 STING uses external AI services by default. Resources below are only needed if running Ollama locally.
 {{< /alert >}}
 
