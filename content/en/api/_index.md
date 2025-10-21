@@ -68,7 +68,4 @@ X-RateLimit-Reset: 1704067200
 
 ## SDKs and Client Libraries
 
-Official client libraries:
-- **Python SDK** (planned)
-- **JavaScript/TypeScript SDK** (planned)
-- **Go SDK** (planned)
+Use our RESTful API from any language. Community SDKs may be available - check our GitHub discussions.

@@ -18,7 +18,6 @@ Admin users have additional privileges including:
 - Access to the Admin Panel via the sidebar.
 - Ability to approve/reject pending documents.
 - Direct upload to any honey jar without approval.
-- User management capabilities (coming soon).
 - System-wide honey jar management.
 
 ## Document Approval Workflow
@@ -78,7 +77,6 @@ STING uses a role-based access control system synchronized with Ory Kratos:
    - Can manage all honey jars.
    - Access to admin panel.
    - Can approve/reject documents.
-   - Can promote other users (coming soon)
 
 2. **User Role** (`role: user`):
    - Default role for new registrations
@@ -160,15 +158,6 @@ Admin API endpoints require:
 - Valid session with admin role
 - CSRF protection for state-changing operations
 - Rate limiting to prevent abuse
-
-## Admin Dashboard (Coming Soon)
-
-Future admin dashboard features:
-- System statistics and metrics
-- User activity monitoring
-- Honey jar usage analytics
-- Performance monitoring
-- Security alerts
 
 ## Troubleshooting Admin Issues
 
