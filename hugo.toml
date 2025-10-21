@@ -7,6 +7,9 @@ enableMissingTranslationPlaceholders = false
 enableRobotsTXT = true
 enableGitInfo = true
 
+# Make relative URLs absolute with baseURL
+canonifyURLs = true
+
 # Docsy theme via Hugo Modules
 [module]
   [[module.imports]]
