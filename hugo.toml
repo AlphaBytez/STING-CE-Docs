@@ -64,6 +64,9 @@ canonifyURLs = true
   offlineSearchMaxResults = 25
   offlineSearchSections = ["docs", "api", "about"]
 
+  # Lunr.js offline search CDN
+  offlineSearchUseFlexsearch = false
+
   # Enable version dropdown
   version_menu = "Versions"
   version = "v1.0"
