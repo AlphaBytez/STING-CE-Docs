@@ -64,7 +64,7 @@ cat ~/.sting-ce/.sting_domain
 
 ### Quick Reference
 
-After installation, check `~/.sting-ce/QUICK_START.txt` for your domain and access URLs.
+After installation, check `~/.sting-ce/QUICK_START.txt` or `/opt/sting-ce/QUICK_START.txt` for your domain and access URLs.
 
 ## Domain Structure
 

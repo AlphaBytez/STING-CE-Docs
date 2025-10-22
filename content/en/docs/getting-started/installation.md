@@ -35,9 +35,9 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/AlphaBytez/STING-CE-Publ
 - ✅ Creates your admin account
 
 **After installation, access STING at:**
-- **Frontend**: https://localhost:8443
-- **API**: https://localhost:5050
-- **Mailpit** (dev email): http://localhost:8025
+- **Frontend**: https://sting.local:8443 OR Congigured Domain
+- **API**: https://sting.local:5050
+- **Mailpit** (dev email): http://sting.local:8025
 
 {{< alert title="Prerequisites" color="info" >}}
 Ensure you have **8GB RAM minimum** and **50GB free disk space** before running the installer.
@@ -381,27 +381,27 @@ STING uses self-signed certificates for local development. You'll need to accept
 
 ```bash
 # Open browser to frontend
-open https://localhost:3010  # Production
+open https://sting.local:3010  # Production
 # or
-open https://localhost:8443  # Development
+open https://sting.local:8443  # Development
 ```
 
 **Test API Access:**
 
 ```bash
 # Check API health
-curl -k https://localhost:5050/api/auth/health
+curl -k https://sting.local:5050/api/auth/health
 
 # Expected response: {"status": "healthy", "timestamp": "..."}
 ```
 
 ### Create Your First User
 
-1. Navigate to `https://localhost:3010`
+1. Navigate to `https://sting.local:3010`
 2. Click **"Register"** to create your first account
 3. Enter your email and password
 4. Complete email verification
-   - Check Mailpit at `http://localhost:8025` for the verification email
+   - Check Mailpit at `http://sting.local:8025` for the verification email
 5. **Log in** to access the dashboard
 
 ### Test the Chatbot
@@ -678,8 +678,8 @@ ollama pull phi3:mini
 ./manage_sting.sh health
 
 # Individual service health
-curl -k https://localhost:5050/api/auth/health
-curl -k http://localhost:8086/health
+curl -k https://sting.local:5050/api/auth/health
+curl -k http://sting.local:8086/health
 ```
 
 ### Recovery Procedures

@@ -566,28 +566,52 @@ pre code {
 }
 
 /* Alerts/Callouts with STING colors */
+.alert {
+  color: #e2e8f0 !important;
+}
+
+.alert-primary {
+  background: rgba(59, 130, 246, 0.15) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+  color: #93c5fd !important;
+  border-left: 4px solid #3b82f6 !important;
+}
+
 .alert-info {
-  background: rgba(6, 182, 212, 0.1);
-  border-color: rgba(6, 182, 212, 0.3);
-  color: #06b6d4;
+  background: rgba(6, 182, 212, 0.15) !important;
+  border-color: rgba(6, 182, 212, 0.4) !important;
+  color: #67e8f9 !important;
+  border-left: 4px solid #06b6d4 !important;
 }
 
 .alert-warning {
-  background: rgba(245, 158, 11, 0.1);
-  border-color: rgba(245, 158, 11, 0.3);
-  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+  color: #fbbf24 !important;
+  border-left: 4px solid #f59e0b !important;
 }
 
 .alert-success {
-  background: rgba(93, 155, 99, 0.1);
-  border-color: rgba(93, 155, 99, 0.3);
-  color: #5d9b63;
+  background: rgba(34, 197, 94, 0.15) !important;
+  border-color: rgba(34, 197, 94, 0.4) !important;
+  color: #86efac !important;
+  border-left: 4px solid #22c55e !important;
 }
 
 .alert-danger {
-  background: rgba(239, 68, 68, 0.1);
-  border-color: rgba(239, 68, 68, 0.3);
-  color: #ef4444;
+  background: rgba(239, 68, 68, 0.15) !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+  color: #fca5a5 !important;
+  border-left: 4px solid #ef4444 !important;
+}
+
+/* Ensure alert titles are visible */
+.alert-title,
+.alert .alert-heading,
+.alert h4,
+.alert strong {
+  color: inherit !important;
+  opacity: 1 !important;
 }
 
 /* Page title with STING accent */
