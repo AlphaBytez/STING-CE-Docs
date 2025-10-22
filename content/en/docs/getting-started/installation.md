@@ -387,8 +387,6 @@ STING uses self-signed certificates for local development. You'll need to accept
 
 ```bash
 # Open browser to frontend
-open https://sting.local:3010  # Production
-# or
 open https://sting.local:8443  # Development
 ```
 
@@ -403,12 +401,15 @@ curl -k https://sting.local:5050/api/auth/health
 
 ### Create Your First User
 
-1. Navigate to `https://sting.local:3010`
-2. Click **"Register"** to create your first account
-3. Enter your email and password
-4. Complete email verification
+1. If default admin was not created during install, you will need to first create admin account:
+   ```
+   sudo msting create admin [email-here]
+   ```
+3. Check output for confirmation
+4. Enter email (default `admin@sting.local`) 
+5. Complete email verification
    - Check Mailpit at `http://sting.local:8025` for the verification email
-5. **Log in** to access the dashboard
+6. **Log in** to access the dashboard
 
 ### Test the Chatbot
 
@@ -781,3 +782,4 @@ STING is now installed and ready to use! Check out these guides to get started:
 - [Performance Tuning](/docs/administration/performance-admin-guide/) - Optimize for your workload
 
 Need help? Visit our [Troubleshooting Guide](/docs/troubleshooting/) or reach out to the community!
+
