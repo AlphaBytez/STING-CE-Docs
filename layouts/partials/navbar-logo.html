@@ -1,4 +1,9 @@
 <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}">
-  <img src="/images/sting-logo.webp" alt="{{ .Site.Title }}" style="height: 36px; margin-right: 10px;">
-  <span class="text-uppercase font-weight-bold">{{ .Site.Title }}</span>
+  {{/* Show logo image on all pages except home page */}}
+  {{ if not .IsHome }}
+  <span class="navbar-brand__logo navbar-logo">
+    <img src="{{ "/images/sting-logo.webp" | relURL }}" alt="{{ .Site.Title }}" style="height: 40px; width: auto; margin-right: 12px;">
+  </span>
+  {{ end }}
+  <span class="navbar-brand__name">{{ .Site.Title }}</span>
 </a>
