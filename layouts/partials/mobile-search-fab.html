@@ -1,0 +1,125 @@
+{{/* Mobile Search FAB - Better UX for mobile users */}}
+<div class="d-block d-md-none">
+  <!-- Floating Action Button for Search -->
+  <button class="mobile-search-fab" id="mobile-search-btn" aria-label="Search">
+    <i class="fas fa-search"></i>
+  </button>
+
+  <!-- Full-screen Search Modal -->
+  <div class="mobile-search-modal" id="mobile-search-modal">
+    <button class="close-btn" id="close-search-btn" aria-label="Close search">
+      <i class="fas fa-times"></i>
+    </button>
+    
+    <div class="text-center mb-4">
+      <h2 style="color: #eab308; font-size: 2rem; margin-bottom: 0.5rem;">Search STING Docs</h2>
+      <p style="color: #cbd5e1; font-size: 1rem;">Find what you're looking for...</p>
+    </div>
+    
+    <!-- Search Input -->
+    <input 
+      type="text" 
+      class="search-input" 
+      id="mobile-search-input"
+      placeholder="Search documentation..."
+      autocomplete="off"
+    />
+    
+    <!-- Search Results Container -->
+    <div class="search-results mt-4" id="mobile-search-results" style="width: 100%; max-width: 500px;">
+      <!-- Results will be populated here -->
+    </div>
+    
+    <!-- Quick Links -->
+    <div class="quick-links mt-4" style="width: 100%; max-width: 500px;">
+      <h4 style="color: #eab308; font-size: 1rem; margin-bottom: 1rem;">Quick Access</h4>
+      <div class="row g-2">
+        <div class="col-6">
+          <a href="{{ "docs/getting-started/" | relURL }}" class="btn btn-outline-light btn-sm w-100">
+            <i class="fas fa-rocket me-2"></i>Getting Started
+          </a>
+        </div>
+        <div class="col-6">
+          <a href="{{ "api/" | relURL }}" class="btn btn-outline-light btn-sm w-100">
+            <i class="fas fa-code me-2"></i>API Reference
+          </a>
+        </div>
+        <div class="col-6">
+          <a href="{{ "docs/authentication/" | relURL }}" class="btn btn-outline-light btn-sm w-100">
+            <i class="fas fa-shield-alt me-2"></i>Authentication
+          </a>
+        </div>
+        <div class="col-6">
+          <a href="{{ "docs/administration/" | relURL }}" class="btn btn-outline-light btn-sm w-100">
+            <i class="fas fa-cog me-2"></i>Administration
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchBtn = document.getElementById('mobile-search-btn');
+  const searchModal = document.getElementById('mobile-search-modal');
+  const closeBtn = document.getElementById('close-search-btn');
+  const searchInput = document.getElementById('mobile-search-input');
+  
+  // Open search modal
+  if (searchBtn) {
+    searchBtn.addEventListener('click', function() {
+      searchModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        searchInput.focus();
+      }, 300);
+    });
+  }
+  
+  // Close search modal
+  function closeSearch() {
+    searchModal.classList.remove('active');
+    document.body.style.overflow = '';
+    searchInput.value = '';
+  }
+  
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeSearch);
+  }
+  
+  // Close on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+      closeSearch();
+    }
+  });
+  
+  // Close on backdrop click
+  searchModal.addEventListener('click', function(e) {
+    if (e.target === searchModal) {
+      closeSearch();
+    }
+  });
+  
+  // Simple search functionality (you can integrate with Algolia or your search system)
+  searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    const resultsContainer = document.getElementById('mobile-search-results');
+    
+    if (query.length > 2) {
+      // This is a simple example - replace with your actual search implementation
+      resultsContainer.innerHTML = `
+        <div style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1rem;">
+          Searching for "${query}"...
+        </div>
+        <div class="alert alert-info" style="background: rgba(234, 179, 8, 0.1); border-color: #eab308; color: #f1f5f9;">
+          <small>🚧 Search integration coming soon! For now, use the quick links above or browse the navigation menu.</small>
+        </div>
+      `;
+    } else {
+      resultsContainer.innerHTML = '';
+    }
+  });
+});
+</script>
