@@ -1450,6 +1450,26 @@ ul.nav li.active a,
     .DocSearch-Search-Icon {
       color: #eab308 !important;
     }
+
+    /* Fix button text color */
+    .DocSearch-Button-Placeholder {
+      color: #cbd5e1 !important;
+    }
+
+    .DocSearch-Button-Keys {
+      color: #cbd5e1 !important;
+    }
+
+    .DocSearch-Button-Key {
+      color: #cbd5e1 !important;
+      background: rgba(255, 255, 255, 0.1) !important;
+      border: 1px solid rgba(234, 179, 8, 0.2) !important;
+    }
+
+    /* All text elements in button */
+    span, kbd {
+      color: #cbd5e1 !important;
+    }
   }
 
   /* Search modal */
@@ -1466,14 +1486,36 @@ ul.nav li.active a,
     border: 1px solid rgba(234, 179, 8, 0.3) !important;
     color: #f1f5f9 !important;
     caret-color: #eab308 !important;
+    -webkit-text-fill-color: #f1f5f9 !important;
 
     &::placeholder {
       color: rgba(241, 245, 249, 0.5) !important;
+      -webkit-text-fill-color: rgba(241, 245, 249, 0.5) !important;
     }
 
     &:focus {
       border-color: #eab308 !important;
       box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.15) !important;
+      color: #f1f5f9 !important;
+      -webkit-text-fill-color: #f1f5f9 !important;
+    }
+  }
+
+  /* Search form container */
+  .DocSearch-Form {
+    background: rgba(255, 255, 255, 0.05) !important;
+
+    input {
+      color: #f1f5f9 !important;
+      -webkit-text-fill-color: #f1f5f9 !important;
+    }
+  }
+
+  /* Search box container */
+  .DocSearch-SearchBar {
+    input {
+      color: #f1f5f9 !important;
+      -webkit-text-fill-color: #f1f5f9 !important;
     }
   }
 
