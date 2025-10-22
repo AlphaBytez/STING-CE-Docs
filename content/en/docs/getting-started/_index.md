@@ -12,10 +12,10 @@ Welcome to STING! This section will help you install, configure, and start using
 
 ## Quick Start
 
-1. **System Requirements**: Check hardware and software prerequisites.
-2. **Installation**: Install STING on your platform (macOS, Linux, WSL2).
-3. **Initial Configuration**: Set up your first admin user.
-4. **First Steps**: Create your first Honey Jar and explore features.
+1. **[System Requirements](installation/#system-requirements)**: Check hardware and software prerequisites.
+2. **[Installation](installation/)**: Install STING on your platform (macOS, Linux, WSL2).
+3. **[Initial Configuration](../administration/admin-setup/)**: Set up your first admin user.
+4. **[First Steps](../honey-jars/honey-jar-user-guide/)**: Create your first Honey Jar and explore features.
 
 ## Installation Guides
 

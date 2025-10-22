@@ -12,6 +12,39 @@ Welcome to STING! This guide will walk you through installing STING on your syst
 
 ---
 
+## Quick Start: One-Line Installer
+
+{{< alert title="Fastest Way to Install" color="success" >}}
+Get STING up and running in minutes with our automated installer! It handles platform detection, dependency installation, and launches an interactive setup wizard.
+{{< /alert >}}
+
+<div style="font-size: 1.2em; margin: 1em 0;">
+
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/AlphaBytez/STING-CE-Public/main/bootstrap.sh)"
+```
+
+</div>
+
+**What this does:**
+- ✅ Automatically detects your OS (macOS, WSL2, Debian/Ubuntu)
+- ✅ Installs Docker if not present
+- ✅ Clones the STING repository
+- ✅ Launches the interactive web-based setup wizard
+- ✅ Guides you through configuration (domains, email, LLM preferences)
+- ✅ Creates your admin account
+
+**After installation, access STING at:**
+- **Frontend**: https://localhost:8443
+- **API**: https://localhost:5050
+- **Mailpit** (dev email): http://localhost:8025
+
+{{< alert title="Prerequisites" color="info" >}}
+Ensure you have **8GB RAM minimum** and **50GB free disk space** before running the installer.
+{{< /alert >}}
+
+---
+
 ## System Requirements
 
 ### Minimum Requirements
@@ -292,66 +325,46 @@ The installer automatically:
 
 ## AI Model Setup
 
-STING supports multiple AI model options. Choose the one that best fits your needs:
+STING supports two AI model options. The setup wizard will guide you through configuration during installation.
 
-### Option 1: Ollama (Recommended)
+### Option 1: Ollama (Recommended for Privacy)
 
 {{< alert title="Recommended for Local Deployment" color="primary" >}}
-Ollama provides local AI models with excellent performance and privacy. This is the recommended option for most users.
+Ollama provides local AI models with excellent performance and privacy. Run AI models on your own hardware.
 {{< /alert >}}
 
 1. **Install Ollama** from [ollama.com](https://ollama.com)
 2. **Pull recommended models:**
    ```bash
-   ollama pull phi3:mini
-   ollama pull deepseek-r1
+   ollama pull phi3:mini       # Fast, lightweight model
+   ollama pull llama3:8b       # Balanced performance
+   ollama pull deepseek-r1     # Advanced reasoning
    ```
+3. **Configure in STING:**
+   - The setup wizard will detect Ollama automatically
+   - Or configure later in Settings → AI Models → Ollama
 
-### Option 2: External AI Providers
+### Option 2: OpenAI and External Providers
 
-Configure API keys in the External AI settings for cloud-based AI:
+Configure API keys for cloud-based AI during setup or in the STING interface:
 
-```yaml
-Supported Providers:
-  OpenAI:
-    Models: GPT-4, GPT-4-Turbo, GPT-3.5-Turbo
-    Setup: Add API key in Settings → External AI
+**Supported Providers:**
+- **OpenAI**: GPT-4, GPT-4-Turbo, GPT-3.5-Turbo, o1, o1-mini
+- **Anthropic**: Claude 3.5 Sonnet, Claude 3 Opus, Claude 3 Haiku
+- **Google**: Gemini Pro, Gemini Pro Vision
+- **Custom**: Any OpenAI-compatible API endpoint
 
-  Anthropic Claude:
-    Models: Claude 3 Opus, Claude 3 Sonnet, Claude 3 Haiku
-    Setup: Add API key in Settings → External AI
+**Configuration via Settings:**
+1. Navigate to Settings → AI Models → External Providers
+2. Add your API key for the provider you want to use
+3. Select your preferred model
+4. Test the connection
 
-  Google Gemini:
-    Models: Gemini Pro, Gemini Pro Vision
-    Setup: Add API key in Settings → External AI
-
-  Custom Providers:
-    Support: Any OpenAI-compatible API endpoint
-    Config: Custom base URL + API key
-```
-
-**Example Configuration:**
-
+**Environment Variables (Optional):**
 ```bash
-# Set via environment variables (optional)
 export OPENAI_API_KEY="sk-..."
 export ANTHROPIC_API_KEY="sk-ant-..."
 export GOOGLE_API_KEY="..."
-```
-
-### Option 3: Legacy Models (Optional)
-
-{{< alert title="Legacy Support" color="warning" >}}
-HuggingFace tokens are only needed for legacy model support (phi3, llama3, zephyr). The modern Ollama/External AI stack does not require HuggingFace tokens.
-{{< /alert >}}
-
-If you need legacy models:
-
-```bash
-# Interactive token setup
-./setup_hf_token.sh
-
-# Token will be securely stored in HashiCorp Vault
 ```
 
 ---
@@ -516,25 +529,26 @@ Consider upgrading resources when you notice:
 
 ## Advanced Configuration
 
-### Custom Model Configuration
+### AI Model Configuration
 
-Edit the main configuration file to customize model settings:
+Configure AI models through the web interface or environment variables:
 
+**Via Web Interface (Recommended):**
+1. Navigate to Settings → AI Models
+2. Configure Ollama or External API providers
+3. Set your preferred default model
+4. Adjust temperature and max tokens as needed
+
+**Via Environment Variables:**
 ```bash
-vim conf/config.yml
-```
+# Ollama Configuration
+export OLLAMA_BASE_URL="http://localhost:11434"
+export OLLAMA_DEFAULT_MODEL="llama3:8b"
 
-**Example Customization:**
-
-```yaml
-llm_service:
-  default_model: phi3
-  models:
-    phi3:
-      enabled: true
-      max_tokens: 4096
-    deepseek-1.5b:
-      enabled: false  # Disable to save memory
+# External AI Configuration
+export OPENAI_API_KEY="sk-..."
+export DEFAULT_AI_PROVIDER="openai"
+export DEFAULT_AI_MODEL="gpt-4"
 ```
 
 ### Database Access
@@ -615,17 +629,28 @@ sudo kill -9 [PID]
 </details>
 
 <details>
-<summary><strong>Model Loading Issues</strong></summary>
+<summary><strong>AI Model Connection Issues</strong></summary>
 
+**For Ollama:**
 ```bash
-# Check model status
-./sting-llm status
+# Check if Ollama is running
+ollama list
 
-# Manually download models
-./sting-llm download phi3
+# Restart Ollama service
+systemctl restart ollama  # Linux
+# or restart the Ollama app on macOS
 
-# Check available disk space
-df -h ~/.sting-ce/models
+# Test Ollama connection
+curl http://localhost:11434/api/tags
+```
+
+**For External APIs:**
+```bash
+# Test OpenAI connection
+curl https://api.openai.com/v1/models \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+
+# Verify API key in STING Settings → AI Models
 ```
 
 </details>
@@ -634,15 +659,14 @@ df -h ~/.sting-ce/models
 <summary><strong>Memory Issues</strong></summary>
 
 ```bash
-# Check memory usage
-./sting-llm memory
+# Check Docker container memory usage
+docker stats --no-stream
 
-# Reduce loaded models
-vim conf/config.yml
-# Set model_lifecycle.max_loaded_models: 1
+# For Ollama models using too much RAM:
+# Switch to a smaller model (e.g., phi3:mini instead of llama3:70b)
+ollama pull phi3:mini
 
-# Restart LLM service
-./sting-llm restart
+# Update default model in STING Settings → AI Models
 ```
 
 </details>

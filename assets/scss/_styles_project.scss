@@ -196,20 +196,6 @@ pre code {
   align-items: center;
 }
 
-/* Add STING logo before the brand text */
-.td-navbar .navbar-brand::before {
-  content: '';
-  display: inline-block;
-  width: 48px;
-  height: 48px;
-  margin-right: 12px;
-  background-image: url('/docs/images/sting-logo.webp');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.3)) drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
-}
-
 /* Hide any default emoji or icon */
 .td-navbar .navbar-brand .td-navbar__logo,
 .td-navbar .navbar-brand > span:first-child {
@@ -238,7 +224,7 @@ pre code {
 /* Left sidebar search - enhanced styling */
 .td-sidebar .td-search {
   margin-bottom: 1.5rem;
-  padding: 0.75rem;
+  padding: 1rem;
   background: rgba(234, 179, 8, 0.08);
   border-radius: 0.5rem;
   border: 1px solid rgba(234, 179, 8, 0.2);
@@ -1091,4 +1077,106 @@ ul.nav li.active a,
 /* Hide the search in the navbar (top header) */
 .td-navbar .td-search {
   display: none !important;
+}
+
+/* ============================================
+   CUSTOM LOGO - Replace SVG with STING logo
+   ============================================ */
+
+/* Hide the default SVG logo container */
+.navbar-brand__logo {
+  display: none !important;
+}
+
+/* Add STING logo to the navbar brand - with subtle glow like main docs page */
+.navbar-brand::before {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-image: url('/STING-CE-Docs/images/sting-logo-cropped.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 10px;
+  vertical-align: middle;
+  /* Subtle glow that follows the bee shape */
+  filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.3));
+}
+
+/* Lighten pink/magenta syntax highlighting for better readability in code blocks */
+/* Only affect numbers - strings and keywords should keep their original colors */
+.chroma .m,   /* Number/literal */
+.chroma .mb,  /* Number binary */
+.chroma .mf,  /* Number float */
+.chroma .mh,  /* Number hex */
+.chroma .mi,  /* Number integer */
+.chroma .il,  /* Number integer long */
+.chroma .mo {  /* Number octal */
+  color: #ff9dcd !important;  /* Lighter pink instead of monokai's dark #f92672 */
+}
+
+/* Override inline styles for dark pink/magenta text in HTTP headers and plain text code blocks */
+/* Hugo uses inline style: color:#960050;background-color:#1e0010 for these */
+.highlight span[style*="color:#960050"],
+.highlight span[style*="color: #960050"] {
+  color: #ff9dcd !important;  /* Lighter pink for better readability */
+  background-color: transparent !important;  /* Remove the dark background */
+}
+
+/* Style copy button in code blocks with STING yellow */
+.highlight-copy-btn,
+.highlight .copy-btn,
+div.highlight button,
+pre button {
+  color: rgba(234, 179, 8, 1) !important;  /* STING yellow */
+  background-color: rgba(234, 179, 8, 0.1) !important;
+  border: 1px solid rgba(234, 179, 8, 0.3) !important;
+  opacity: 1 !important;
+}
+
+.highlight-copy-btn:hover,
+.highlight .copy-btn:hover,
+div.highlight button:hover,
+pre button:hover {
+  color: rgba(255, 255, 255, 1) !important;
+  background-color: rgba(234, 179, 8, 0.9) !important;
+  border-color: rgba(234, 179, 8, 1) !important;
+}
+
+/* Bootstrap tooltip styling for copy buttons - black background, yellow text */
+.tooltip {
+  --bs-tooltip-bg: #000000 !important;
+  --bs-tooltip-color: #eab308 !important;
+}
+
+.tooltip-inner {
+  background-color: #000000 !important;
+  color: #eab308 !important;
+  border: 1px solid #eab308 !important;
+  font-weight: 600;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+/* Tooltip arrow colors to match black background */
+.bs-tooltip-top .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^="top"] .tooltip-arrow::before {
+  border-top-color: #000000 !important;
+}
+
+.bs-tooltip-bottom .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^="bottom"] .tooltip-arrow::before {
+  border-bottom-color: #000000 !important;
+}
+
+.bs-tooltip-start .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^="left"] .tooltip-arrow::before {
+  border-left-color: #000000 !important;
+}
+
+.bs-tooltip-end .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow::before {
+  border-right-color: #000000 !important;
 }
