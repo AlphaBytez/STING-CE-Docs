@@ -1,6 +1,6 @@
 ---
-title: "Honey jar access control"
-linkTitle: "Honey jar access control"
+title: "Honey Jar Access Control"
+linkTitle: "Honey Jar Access Control"
 weight: 40
 description: >
   Honey Jar Access Control - comprehensive documentation.

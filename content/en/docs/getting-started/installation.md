@@ -39,6 +39,8 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/AlphaBytez/STING-CE-Publ
 - **API**: https://sting.local:5050
 - **Mailpit** (dev email): http://sting.local:8025
 
+For additional installation options and detailed configuration, see the [Fresh Installation Guide](/docs/getting-started/fresh-install-guide/).
+
 {{< alert title="Prerequisites" color="info" >}}
 Ensure you have **8GB RAM minimum** and **50GB free disk space** before running the installer.
 {{< /alert >}}
@@ -52,6 +54,8 @@ Ensure you have **8GB RAM minimum** and **50GB free disk space** before running 
 {{< alert title="Hardware Requirements" color="info" >}}
 STING Core requires **8GB RAM minimum** and **30GB free disk space**. Docker Desktop 4.0+ with Docker Compose is required. AI models run via Ollama (separate) or external APIs (no extra resources).
 {{< /alert >}}
+
+For optimal performance with larger deployments, see the [Hardware Acceleration Guide](/docs/administration/hardware-acceleration-guide/) and [Performance Admin Guide](/docs/administration/performance-admin-guide/).
 
 #### Check Your System
 
@@ -343,6 +347,8 @@ Ollama provides local AI models with excellent performance and privacy. Run AI m
 3. **Configure in STING:**
    - The setup wizard will detect Ollama automatically
    - Or configure later in Settings → AI Models → Ollama
+
+For detailed model recommendations and configuration, see the [Ollama Model Setup Guide](/docs/bee-features/ollama-model-setup/).
 
 ### Option 2: OpenAI and External Providers
 
@@ -652,6 +658,8 @@ curl https://api.openai.com/v1/models \
 
 # Verify API key in STING Settings → AI Models
 ```
+
+For comprehensive LLM troubleshooting, see the [LLM Health Check Guide](/docs/troubleshooting/llm-health-check/).
 
 </details>
 

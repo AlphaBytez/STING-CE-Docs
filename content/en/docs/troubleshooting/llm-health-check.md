@@ -19,6 +19,8 @@ Run this script:
 3. After upgrading or changing LLM models
 4. If you want to verify that your Hugging Face token is working
 
+For initial LLM setup, see the [Ollama Model Setup Guide](/docs/bee-features/ollama-model-setup/). For performance optimization, see the [Hardware Acceleration Guide](/docs/administration/hardware-acceleration-guide/).
+
 ## Usage
 
 ```bash

@@ -25,7 +25,7 @@ When you install STING, it automatically generates a unique local domain for you
 ```
 
 After installation completes, you'll see:
-```
+```text
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 STING Installation Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

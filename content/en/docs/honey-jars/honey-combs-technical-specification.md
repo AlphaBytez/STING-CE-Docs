@@ -1,6 +1,6 @@
 ---
-title: "HONEY COMBS TECHNICAL SPECIFICATION"
-linkTitle: "HONEY COMBS TECHNICAL SPECIFICATION"
+title: "Honey Combs Technical Specification"
+linkTitle: "Honey Combs Technical Specification"
 weight: 60
 description: >
   Honey Combs Technical Specification - comprehensive documentation.

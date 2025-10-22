@@ -15,6 +15,8 @@ STING-CE supports hardware acceleration for faster LLM inference using:
 - **CUDA** on NVIDIA GPUs
 - **CPU optimizations** for systems without GPU
 
+For basic installation and system requirements, see the [STING Platform Installation Guide](/docs/getting-started/installation/). For model-specific setup, see the [Ollama Model Setup Guide](/docs/bee-features/ollama-model-setup/).
+
 ## Current Status
 
 ### Docker Limitations

@@ -1,6 +1,6 @@
 ---
-title: "HONEY JAR EXPORT IMPORT SYSTEM"
-linkTitle: "HONEY JAR EXPORT IMPORT SYSTEM"
+title: "Honey Jar Export/Import System"
+linkTitle: "Honey Jar Export/Import System"
 weight: 50
 description: >
   Honey Jar Export Import System - comprehensive documentation.

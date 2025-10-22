@@ -1,6 +1,6 @@
 ---
-title: "Honey jar data connectivity"
-linkTitle: "Honey jar data connectivity"
+title: "Honey Jar Data Connectivity"
+linkTitle: "Honey Jar Data Connectivity"
 weight: 30
 description: >
   Honey Jar Data Connectivity - comprehensive documentation.

@@ -14,12 +14,14 @@ STING implements a modern, passwordless authentication system that prioritizes s
 
 1. **Passkeys (WebAuthn)** - Biometric authentication using device capabilities
 2. **Email OTP** - One-time codes sent via email
+
+For detailed passkey analysis and implementation details, see the [Passkey Manager Analysis](/docs/security/passkey-manager-analysis/). For cross-device setup, see the [WebAuthn Cross-Machine Guide](/docs/authentication/webauthn-cross-machine/).
 3. **SMS OTP** - One-time codes sent via SMS (requires phone number)
 
 ## Architecture
 
 ### Authentication Flow
-```
+```text
 User → Login Page → Kratos → Authentication Method → Session → Dashboard
 ```
 

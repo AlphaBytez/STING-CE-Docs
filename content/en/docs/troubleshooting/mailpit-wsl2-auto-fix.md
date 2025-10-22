@@ -15,7 +15,7 @@ This document describes the OS-aware mailpit lifecycle management system that au
 ## The Problem
 
 On WSL2, mailpit frequently fails to start with errors like:
-```
+```text
 Error: ports are not available: exposing port TCP 127.0.0.1:8025 -> 127.0.0.1:0:
 listen tcp4 127.0.0.1:8025: bind: Only one usage of each socket address is normally permitted.
 ```

@@ -1,6 +1,6 @@
 ---
-title: "HONEY JAR USER GUIDE"
-linkTitle: "HONEY JAR USER GUIDE"
+title: "Honey Jar User Guide"
+linkTitle: "Honey Jar User Guide"
 weight: 10
 description: >
   Honey Jar User Guide - comprehensive documentation.

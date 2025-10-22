@@ -36,3 +36,4 @@ hugo.toml.modules-backup
 go.mod.backup
 go.sum.backup
 themes/docsy.diff
+markdown-review-tracking.md

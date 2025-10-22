@@ -1,6 +1,6 @@
 ---
-title: "HONEY JAR TECHNICAL REFERENCE"
-linkTitle: "HONEY JAR TECHNICAL REFERENCE"
+title: "Honey Jar Technical Reference"
+linkTitle: "Honey Jar Technical Reference"
 weight: 20
 description: >
   Honey Jar Technical Reference - comprehensive documentation.

@@ -11,6 +11,8 @@ description: >
 ## Overview
 STING uses Ollama for local AI capabilities, including the Bee chat assistant. This guide helps you set up the required models.
 
+For system requirements and initial installation, see the [STING Platform Installation Guide](/docs/getting-started/installation/).
+
 ## Quick Start
 
 ### 1. Check if Ollama is running
@@ -91,6 +93,8 @@ After changing the configuration:
 - Ollama models are loaded into memory when used
 - Ensure you have sufficient RAM (8GB+ recommended)
 - Models are automatically unloaded when idle
+
+For Apple Silicon and NVIDIA GPU acceleration, see the [Hardware Acceleration Guide](/docs/administration/hardware-acceleration-guide/).
 
 ## Using Your Models
 

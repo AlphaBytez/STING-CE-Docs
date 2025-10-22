@@ -12,6 +12,8 @@ description: >
 
 This guide explains how using a custom domain can solve WSL2 networking issues and provide a more stable STING installation experience. Custom domains help bypass localhost/127.0.0.1 networking complexities that are common in WSL2 environments.
 
+For general domain configuration, see the [Installation Domain Guide](/docs/configuration/installation-domain-guide/). For Mailpit-specific WSL2 issues, see the [Mailpit WSL2 Auto-Fix Guide](/docs/troubleshooting/mailpit-wsl2-auto-fix/).
+
 ## Why Custom Domains Help with WSL2
 
 ### The Problem
