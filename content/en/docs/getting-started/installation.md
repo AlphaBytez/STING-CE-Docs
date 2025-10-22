@@ -413,7 +413,7 @@ curl -k https://sting.local:5050/api/auth/health
 
 ### Test the Chatbot
 
-1. Navigate to the **Chat** interface
+1. Navigate to the ** Bee Chat** interface
 2. Send a test message: *"Hello, what is STING?"*
 3. Verify Bee responds appropriately
 4. Check that your selected model is working
@@ -671,7 +671,7 @@ For comprehensive LLM troubleshooting, see the [LLM Health Check Guide](/docs/tr
 # Check Docker container memory usage
 docker stats --no-stream
 
-# For Ollama models using too much RAM:
+# For Ollama models using too much RAM (if using an APU):
 # Switch to a smaller model (e.g., phi3:mini instead of llama3:70b)
 ollama pull phi3:mini
 
@@ -782,4 +782,5 @@ STING is now installed and ready to use! Check out these guides to get started:
 - [Performance Tuning](/docs/administration/performance-admin-guide/) - Optimize for your workload
 
 Need help? Visit our [Troubleshooting Guide](/docs/troubleshooting/) or reach out to the community!
+
 
