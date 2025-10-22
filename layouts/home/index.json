@@ -1,1 +1,0 @@
-[{"test": "template is running", "pageCount": {{ len .Site.AllPages }}, "regularPageCount": {{ len .Site.RegularPages }}}]

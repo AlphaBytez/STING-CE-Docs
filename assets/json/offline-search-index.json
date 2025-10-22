@@ -1,7 +1,0 @@
-{{- $.Scratch.Add "index" slice -}}
-{{- range where .Site.Pages "Kind" "page" -}}
-  {{- if and (not .Params.exclude_search) (ne .Type "none") -}}
-    {{- $.Scratch.Add "index" (dict "ref" .Permalink "title" .Title "categories" .Params.categories "tags" .Params.tags "description" .Description "body" .Plain "excerpt" (substr .Plain 0 70)) -}}
-  {{- end -}}
-{{- end -}}
-{{- $.Scratch.Get "index" | jsonify -}}

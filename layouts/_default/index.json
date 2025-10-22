@@ -1,8 +1,0 @@
-{{- $.Scratch.Add "index" slice -}}
-{{- $sections := site.Params.offlineSearchSections | default (slice "docs") -}}
-{{- range site.RegularPages -}}
-  {{- if and (in $sections .Type) (ne .Params.exclude_search true) -}}
-    {{- $.Scratch.Add "index" (dict "title" .Title "href" .RelPermalink "content" (.Plain | htmlUnescape) "description" (.Params.description | default .Summary)) -}}
-  {{- end -}}
-{{- end -}}
-{{- $.Scratch.Get "index" | jsonify -}}
