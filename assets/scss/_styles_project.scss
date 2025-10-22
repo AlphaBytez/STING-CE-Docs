@@ -251,6 +251,27 @@ pre code {
   color: rgba(241, 245, 249, 0.5);
 }
 
+/* Mobile: Center the sidebar search container */
+@media (max-width: 768px) {
+  .td-sidebar .td-search {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .td-sidebar .td-search-input {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Center DocSearch button if using Algolia */
+  .td-sidebar .DocSearch-Button {
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+}
+
 /* Sidebar navigation links */
 .td-sidebar-nav .td-sidebar-link {
   color: #cbd5e1;
@@ -466,44 +487,49 @@ img[src*="sting-logo"] {
 
 /* Mobile navbar adjustments */
 @media (max-width: 768px) {
-  /* Hide only main menu navigation links on mobile, not search */
-  .td-navbar .navbar-nav:not(.td-navbar__search) > .nav-item:not(.td-search-input) {
+  /* Hide main menu navigation links on mobile */
+  .td-navbar .navbar-nav > .nav-item {
     display: none !important;
   }
 
-  /* Keep search visible */
+  /* Hide search from navbar on mobile (we have sidebar search) */
   .td-navbar .td-search,
   .td-navbar .td-search-input,
-  .td-search-box {
-    display: block !important;
-    width: 100% !important;
+  .td-navbar .td-search-box {
+    display: none !important;
   }
 
-  /* Ensure mobile navbar toggler is visible and positioned on left */
+  /* Make navbar a flex container for proper layout */
+  .td-navbar {
+    min-height: 60px !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Navbar container - simple flex layout */
+  .td-navbar .container,
+  .td-navbar .container-fluid {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    position: relative !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  /* Hamburger menu - fixed to left */
   .td-navbar .navbar-toggler {
-    display: block !important;
+    display: flex !important;
     position: absolute !important;
     left: 1rem !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
     margin: 0 !important;
     padding: 0.5rem !important;
-  }
-
-  /* Make navbar more compact on mobile */
-  .td-navbar {
-    min-height: 60px !important;
-    position: relative !important;
-  }
-
-  /* Center the navbar container */
-  .td-navbar .container,
-  .td-navbar .container-fluid {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100% !important;
-    padding: 0.5rem 3rem !important; /* Add side padding to avoid hamburger menu */
+    z-index: 10 !important;
   }
 }
 
@@ -592,38 +618,25 @@ img[src*="sting-logo"] {
     padding: 0.5rem 1rem !important;
   }
 
-  /* Center navbar brand on mobile */
+  /* Center navbar brand on mobile - absolutely centered */
   .td-navbar .navbar-brand {
     font-size: 18px !important;
-    margin: 0 auto !important;
+    margin: 0 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     text-align: center !important;
-    width: 100% !important;
     padding: 0.5rem 0 !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
   }
 
-  /* Ensure logo is centered within brand */
+  /* Ensure logo is properly spaced within brand */
   .td-navbar .navbar-brand::before {
     margin-right: 8px !important;
-  }
-
-  /* Search bar on mobile - centered */
-  .td-search-input {
-    font-size: 16px !important;
-    padding: 0.5rem !important;
-    width: 100% !important;
-    text-align: center !important;
-  }
-
-  /* Center sidebar search on mobile */
-  .td-sidebar .td-search {
-    text-align: center !important;
-  }
-
-  .td-sidebar .td-search-input {
-    text-align: left !important; /* Keep input text left-aligned for UX */
+    flex-shrink: 0 !important;
   }
 
   /* Buttons - larger touch targets, centered */
