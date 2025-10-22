@@ -251,24 +251,42 @@ pre code {
   color: rgba(241, 245, 249, 0.5);
 }
 
-/* Mobile: Center the sidebar search container */
+/* Mobile: Improved sidebar search container */
 @media (max-width: 768px) {
   .td-sidebar .td-search {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
+    align-items: stretch !important;
+    padding: 0.75rem !important;
+    margin: 0.5rem 0 !important;
   }
 
   .td-sidebar .td-search-input {
     width: 100% !important;
     max-width: 100% !important;
+    border-radius: 0.5rem !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(234, 179, 8, 0.3) !important;
+    color: #f1f5f9 !important;
   }
 
   /* Center DocSearch button if using Algolia */
   .td-sidebar .DocSearch-Button {
-    margin: 0 auto !important;
+    margin: 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0.5rem !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 16px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(234, 179, 8, 0.3) !important;
+    text-align: left !important;
+  }
+
+  .td-sidebar .DocSearch-Button-Placeholder {
+    color: rgba(241, 245, 249, 0.7) !important;
   }
 }
 
@@ -485,6 +503,29 @@ img[src*="sting-logo"] {
    MOBILE RESPONSIVE ENHANCEMENTS
    ============================================ */
 
+/* Mobile viewport fixes */
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  /* Main container adjustments */
+  .td-outer, .td-main, .td-content {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Home page specific adjustments */
+  .td-content[style*="padding: 1rem"] {
+    padding: 0.5rem !important;
+  }
+}
+
 /* Mobile navbar adjustments */
 @media (max-width: 768px) {
   /* Hide main menu navigation links on mobile */
@@ -505,36 +546,80 @@ img[src*="sting-logo"] {
     position: relative !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: space-between !important;
+    padding: 0.5rem 1rem !important;
+    width: 100% !important;
   }
 
-  /* Navbar container - simple flex layout */
+  /* Navbar container - proper flex layout */
   .td-navbar .container,
   .td-navbar .container-fluid {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: space-between !important;
     width: 100% !important;
     position: relative !important;
-    padding: 0.5rem 1rem !important;
+    padding: 0 !important;
+    max-width: 100% !important;
   }
 
   /* Hamburger menu - fixed to left */
   .td-navbar .navbar-toggler {
     display: flex !important;
-    position: absolute !important;
-    left: 1rem !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
+    position: relative !important;
     margin: 0 !important;
     padding: 0.5rem !important;
     z-index: 10 !important;
+    order: 1 !important;
+  }
+
+  /* Logo/brand - centered */
+  .td-navbar .navbar-brand {
+    order: 2 !important;
+    flex: 1 !important;
+    text-align: center !important;
+    margin: 0 !important;
+  }
+
+  /* Create space on right for balance */
+  .td-navbar::after {
+    content: "";
+    order: 3 !important;
+    width: 44px !important;
+    height: 44px !important;
+    flex-shrink: 0 !important;
   }
 }
 
 /* Mobile-first improvements for documentation */
 @media (max-width: 768px) {
+  /* Landing page responsive adjustments */
+  .row.row-cols-1.row-cols-md-3 {
+    margin-top: 1rem !important;
+  }
+
+  .row.row-cols-1.row-cols-md-3 .col {
+    margin-bottom: 1rem !important;
+  }
+
+  /* Card improvements on mobile */
+  .card {
+    margin: 0.5rem 0 !important;
+    border-radius: 0.5rem !important;
+  }
+
+  .card-body {
+    padding: 1.5rem 1rem !important;
+  }
+
+  /* Alert boxes on mobile */
+  .alert {
+    margin: 1rem 0 !important;
+    padding: 1rem !important;
+    border-radius: 0.5rem !important;
+  }
+
   /* Improved readability on mobile */
   .td-content {
     font-size: 16px !important;
@@ -738,6 +823,11 @@ img[src*="sting-logo"] {
     padding: 0.75rem !important;
   }
 
+  /* Landing page hero section */
+  .td-content[style*="padding: 1rem"] {
+    padding: 0.5rem !important;
+  }
+
   .td-content h1 {
     font-size: 24px !important;
   }
@@ -762,6 +852,24 @@ img[src*="sting-logo"] {
   /* Sidebar even narrower on very small screens */
   .td-sidebar {
     max-width: 90% !important;
+  }
+
+  /* Buttons full width on very small screens */
+  .btn-lg {
+    width: 100% !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Search input sizing */
+  .td-sidebar .td-search-input,
+  .td-sidebar .DocSearch-Button {
+    font-size: 15px !important;
+    padding: 0.6rem 0.8rem !important;
+  }
+
+  /* Navbar brand text adjustment */
+  .td-navbar .navbar-brand {
+    font-size: 1.1rem !important;
   }
 }
 
