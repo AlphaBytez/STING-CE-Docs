@@ -27,3 +27,11 @@ Thumbs.db
 *.bak
 .claude/settings.local.json
 claude.md
+
+# Local development/testing files
+*.backup
+*.original
+hugo-simple.toml
+hugo.toml.modules-backup
+go.mod.backup
+go.sum.backup
