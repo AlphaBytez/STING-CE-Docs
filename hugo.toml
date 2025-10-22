@@ -1,4 +1,4 @@
-baseURL = "https://alphabytez.github.io/STING-CE-Docs/"
+baseURL = "https://docs.stingassistant.com/"
 title = "STING Documentation"
 languageCode = "en-us"
 contentDir = "content/en"
@@ -92,11 +92,11 @@ canonifyURLs = true
   # Enable version dropdown
   version_menu = "Versions"
   version = "v1.0"
-  url_latest_version = "https://alphabytez.github.io/STING-CE-Docs/docs/"
+  url_latest_version = "https://docs.stingassistant.com/docs/"
 
   [[params.versions]]
     version = "v1.0 (latest)"
-    url = "https://alphabytez.github.io/STING-CE-Docs/docs/"
+    url = "https://docs.stingassistant.com/docs/"
 
   # UI customization
   [params.ui]
