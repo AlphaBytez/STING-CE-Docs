@@ -120,4 +120,4 @@ For deployments requiring advanced access controls, consult the [Security Archit
 
 ---
 
-For additional configuration options, see the [Admin Guide](/docs/guides/admin-guide/).
+For additional configuration options, see the [Admin Guide](/docs/administration/admin-guide/).

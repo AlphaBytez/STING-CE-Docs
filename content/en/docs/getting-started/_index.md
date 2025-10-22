@@ -30,4 +30,3 @@ Content from STING/docs will be migrated here, including:
 After installation, explore:
 - [Security Configuration](/docs/security/) - Set up authentication.
 - [Features](/docs/features/) - Learn about STING's capabilities.
-- [Guides](/docs/guides/) - Follow step-by-step tutorials.
