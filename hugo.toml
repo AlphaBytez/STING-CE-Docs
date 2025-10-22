@@ -85,9 +85,9 @@ canonifyURLs = true
 
   # Algolia DocSearch configuration
   [params.search.algolia]
-    appId = "YOUR_APP_ID"
-    apiKey = "YOUR_SEARCH_API_KEY"
-    indexName = "sting-docs"
+    appId = "2ALDOQ0XJL"
+    apiKey = "8710fe4af7e56d45e59bf9277b92994c"
+    indexName = "STING CE Docs"
 
   # Enable version dropdown
   version_menu = "Versions"
