@@ -296,7 +296,6 @@ groups:
 
 ## Related Documentation
 
-- [Debugging Guide](./DEBUGGING.md)
-- [Troubleshooting Guide](../troubleshooting/README.md)
-- [Docker Compose Configuration](../docker-compose.yml)
-- [Service Architecture](../docs/architecture.md)
+- [Debugging Guide](/docs/troubleshooting/debugging/)
+- [Troubleshooting Guide](/docs/troubleshooting/)
+- [System Architecture](/docs/architecture/system-architecture/)

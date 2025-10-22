@@ -211,7 +211,7 @@ For admin-specific support:
 
 ## Related Documentation
 
-- [Honey Jar User Guide](./features/HONEY_JAR_USER_GUIDE.md)
-- [Honey Jar Technical Reference](./features/HONEY_JAR_TECHNICAL_REFERENCE.md)
-- [Authentication Setup](./ADMIN_SETUP.md)
-- [API Reference](./API_REFERENCE.md)
+- [Honey Jar User Guide](/docs/honey-jars/honey-jar-user-guide/)
+- [Honey Jar Technical Reference](/docs/honey-jars/honey-jar-technical-reference/)
+- [Admin Setup](/docs/administration/admin-setup/)
+- [API Reference](/api/api-reference/)

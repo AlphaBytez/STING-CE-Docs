@@ -315,9 +315,8 @@ echo "Pre-flight check complete!"
 
 ## Related Documentation
 
-- [Mailpit WSL2 Auto-Fix](../troubleshooting/MAILPIT_WSL2_AUTO_FIX.md)
-- [Platform Compatibility Guide](../PLATFORM_COMPATIBILITY_GUIDE.md)
-- [WSL2 Custom Domain Solution](../troubleshooting/wsl2-custom-domain-solution.md)
+- [Mailpit WSL2 Auto-Fix](/docs/troubleshooting/mailpit-wsl2-auto-fix/)
+- [WSL2 Custom Domain Solution](/docs/troubleshooting/wsl2-custom-domain-solution/)
 
 ---
 

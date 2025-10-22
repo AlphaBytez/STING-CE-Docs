@@ -29,7 +29,7 @@ STING is a powerful, self-hosted security and data intelligence platform that co
 New to STING? Start here to install and configure your instance.
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fa-book" title="Guides" url="/docs/guides/" %}}
+{{% blocks/feature icon="fa-book" title="Configuration" url="/docs/configuration/" %}}
 Step-by-step tutorials for common tasks and advanced features.
 {{% /blocks/feature %}}
 

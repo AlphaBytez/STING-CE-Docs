@@ -152,7 +152,7 @@ curl -k https://localhost:4433/self-service/login/browser
 
 ### Authentication Issues
 
-For detailed troubleshooting of Kratos authentication issues, refer to the [Troubleshooting Guide](./troubleshooting/README.md) in the troubleshooting directory.
+For detailed troubleshooting of Kratos authentication issues, refer to the [Troubleshooting Guide](/docs/troubleshooting/).
 
 Common issues include:
 - SSL certificate problems with self-signed certificates

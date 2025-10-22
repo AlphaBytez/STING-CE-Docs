@@ -618,4 +618,4 @@ https://sting.example.com:8092/api/public/postman/collection.json
 
 ---
 
-**Need help?** Check the [Public Bee Setup Guide](PUBLIC_BEE_SETUP.md) or contact support for additional assistance.
+**Need help?** Check the [API Reference](/api/api-reference/) or contact support for additional assistance.

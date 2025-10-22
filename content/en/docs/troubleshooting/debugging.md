@@ -420,7 +420,6 @@ export COMPOSE_VERBOSE=true
 
 ## Related Documentation
 
-- [Service Health Monitoring](./SERVICE_HEALTH_MONITORING.md)
-- [Troubleshooting Guide](../troubleshooting/README.md)
-- [Common Errors and Fixes](./COMMON_ERRORS_AND_FIXES.md)
-- [Authentication Troubleshooting](../kratos/LOGIN_TROUBLESHOOTING.md)
+- [Service Health Monitoring](/docs/architecture/service-health-monitoring/)
+- [Troubleshooting Guide](/docs/troubleshooting/)
+- [Common Errors and Fixes](/docs/troubleshooting/common-errors-and-fixes/)

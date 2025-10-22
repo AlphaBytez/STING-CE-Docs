@@ -88,7 +88,7 @@ Test your SMTP connection to ensure emails can be sent:
 nc -v your-smtp-host 587
 ```
 
-For detailed SMTP troubleshooting, see the [Email Testing Guide](/docs/guides/testing-email-sms/).
+For detailed SMTP troubleshooting, see the [Email Testing Guide](/docs/configuration/testing-email-sms/).
 
 ### Configure Alternative Email Service
 
@@ -117,7 +117,7 @@ If verification emails are not being delivered:
 ## Additional Resources
 
 - [Email Verification Setup](/docs/troubleshooting/email-verification-setup/)
-- [Testing Email and SMS](/docs/guides/testing-email-sms/)
-- [Kratos Integration Guide](/docs/guides/kratos-integration-guide/)
+- [Testing Email and SMS](/docs/configuration/testing-email-sms/)
+- [Kratos Integration Guide](/docs/authentication/kratos-integration-guide/)
 
 For persistent issues, consult the [troubleshooting guide](/docs/troubleshooting/) or review Kratos logs for specific error messages.

@@ -224,9 +224,7 @@ Check STING logs for lifecycle events:
 
 ## Related Documentation
 
-- [Platform Compatibility Guide](../PLATFORM_COMPATIBILITY_GUIDE.md)
-- [WSL2 Custom Domain Solution](./wsl2-custom-domain-solution.md)
-- [Docker WSL Fix](../../lib/docker_wsl_fix.sh)
+- [WSL2 Custom Domain Solution](/docs/troubleshooting/wsl2-custom-domain-solution/)
 
 ## Credits
 

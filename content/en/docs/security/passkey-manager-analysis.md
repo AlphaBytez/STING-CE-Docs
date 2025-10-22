@@ -108,12 +108,12 @@ STING implements passkey authentication using:
 - W3C WebAuthn standard
 - Browser-native credential management
 
-For advanced configuration options, see the [WebAuthn Configuration Guide](/docs/security/kratos-webauthn-configuration/).
+For advanced configuration options, see the [WebAuthn Configuration Guide](/docs/authentication/kratos-webauthn-configuration/).
 
 ## Additional Resources
 
-- [Passwordless Authentication Overview](/docs/security/passwordless-authentication/)
-- [Passkey Implementation Guide](/docs/guides/passkey-implementation-guide/)
-- [WebAuthn Cross-Machine Guide](/docs/security/webauthn-cross-machine/)
+- [Passwordless Authentication Overview](/docs/authentication/passwordless-authentication/)
+- [Passkey Implementation Guide](/docs/authentication/passkey-implementation-guide/)
+- [WebAuthn Cross-Machine Guide](/docs/authentication/webauthn-cross-machine/)
 
 For persistent issues, consult the [troubleshooting guide](/docs/troubleshooting/) or contact your system administrator.
