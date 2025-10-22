@@ -35,3 +35,4 @@ hugo-simple.toml
 hugo.toml.modules-backup
 go.mod.backup
 go.sum.backup
+themes/docsy.diff
