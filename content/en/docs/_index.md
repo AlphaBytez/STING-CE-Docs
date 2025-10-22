@@ -13,9 +13,6 @@ This section contains comprehensive documentation for STING, organized by topic:
 ### [Getting Started](/docs/getting-started/)
 Installation guides, quick start tutorials, and initial configuration.
 
-### [Guides](/docs/guides/)
-Step-by-step tutorials for implementing specific features and workflows.
-
 ### [Architecture](/docs/architecture/)
 System architecture, design patterns, and technical specifications.
 
