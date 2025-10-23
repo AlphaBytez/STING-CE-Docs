@@ -29,7 +29,7 @@ STING is an open-source project with a growing community of users and contributo
 
 - **General inquiries**: olliec@alphabytez.dev
 - **Security issues**: security@alphabytez.dev
-- **Marketing site**: [AlphaBytez.github.io/sting-website](https://AlphaBytez.github.io/sting-website/)
+- **Marketing site**: [stingassistant.com](https://stingassistant.com)
 
 ## Credits
 

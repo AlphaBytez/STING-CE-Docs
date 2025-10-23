@@ -145,7 +145,7 @@ canonifyURLs = true
       desc = "Main STING repository"
     [[params.links.developer]]
       name = "Marketing Site"
-      url = "https://AlphaBytez.github.io/sting-website/"
+      url = "https://stingassistant.com"
       icon = "fa fa-globe"
       desc = "Visit our marketing site"
 
