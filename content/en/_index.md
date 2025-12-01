@@ -52,6 +52,20 @@ AI-powered assistance and intelligent agents.
 {{% /blocks/feature %}}
 {{% /blocks/section %}}
 
+{{% blocks/section color="info" type="row" %}}
+{{% blocks/feature icon="fa-shield-alt" title="PII Protection" %}}
+Automatic detection and sanitization of sensitive data.
+{{% /blocks/feature %}}
+
+{{% blocks/feature icon="fa-check-circle" title="QE Bee Quality Assurance" url="/docs/bee-features/qe-bee-review-system/" %}}
+Automated output validation catches PII leaks, truncated content, and quality issues before delivery.
+{{% /blocks/feature %}}
+
+{{% blocks/feature icon="fa-chart-line" title="Analytics & Reporting" %}}
+Custom reports, dashboards, and scheduled exports.
+{{% /blocks/feature %}}
+{{% /blocks/section %}}
+
 {{% blocks/section type="row" %}}
 {{% blocks/feature icon="fab fa-github" title="Contributions welcome!" url="https://github.com/AlphaBytez/STING-CE-Public" %}}
 We welcome [Pull Requests](https://github.com/AlphaBytez/STING-CE-Public/pulls) on **GitHub**. New contributors are always welcome!

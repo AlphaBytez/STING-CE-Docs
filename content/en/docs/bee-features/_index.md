@@ -7,3 +7,11 @@ description: >
 ---
 
 Explore STING's AI capabilities including the Bee chat assistant, conversation management, and intelligent automation.
+
+## Feature Overview
+
+- **Bee Chat** - Conversational AI assistant with knowledge base integration
+- **Conversation Management** - Token-aware context with summarization
+- **Model Modes** - Different AI modes for various use cases
+- **QE Bee** - Automated output validation and quality assurance
+- **Memory Architecture** - Intelligent context retention

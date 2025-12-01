@@ -47,6 +47,67 @@ Ensure you have **8GB RAM minimum** and **50GB free disk space** before running 
 
 ---
 
+## Quick Start: OVA Virtual Machine
+
+{{< alert title="Fastest Evaluation Option" color="success" >}}
+Download a pre-built virtual machine image and be up and running in minutes! No manual installation required.
+{{< /alert >}}
+
+**Download the OVA:**
+- [STING-CE Quick Start OVA](https://github.com/AlphaBytez/STING-CE-Public/releases/latest) (Latest Release)
+
+**What's included:**
+- ✅ Ubuntu 24.04 LTS pre-configured
+- ✅ Docker and Docker Compose installed
+- ✅ STING repository cloned and ready
+- ✅ First-boot installer launches automatically
+
+### OVA System Requirements
+
+```yaml
+VM Resources (Pre-configured):
+  CPU: 4 cores
+  RAM: 8GB
+  Disk: 40GB
+
+Host Requirements:
+  Hypervisor: VirtualBox 6.1+ or VMware Workstation/Fusion/ESXi
+  Host RAM: 12GB+ (8GB for VM + 4GB for host OS)
+  Host Disk: 50GB free space
+```
+
+### Installation Steps
+
+1. **Download** the `.ova` file from GitHub Releases
+2. **Import** into VirtualBox or VMware:
+   - VirtualBox: File → Import Appliance → Select OVA
+   - VMware: File → Open → Select OVA
+3. **Start** the virtual machine
+4. **Wait** for the VM to boot and display its IP address
+5. **Open** your browser to `https://<VM_IP>:5000`
+6. **Complete** the web-based setup wizard
+7. **Access** STING at `https://<hostname>:8443`
+
+{{< alert title="First Boot" color="info" >}}
+On first boot, the VM will display its IP address and hostname in the console. The web installer starts automatically - just open your browser and follow the wizard.
+{{< /alert >}}
+
+{{< alert title="Internet Required" color="warning" >}}
+**The VM requires internet access during initial setup.** The installer downloads Docker images for all STING services (~10-15GB). Ensure the VM has network connectivity before starting. After setup, STING runs fully offline (except for optional external AI APIs).
+{{< /alert >}}
+
+### OVA vs Manual Installation
+
+| Feature | OVA Quick Start | Manual Installation |
+|---------|-----------------|---------------------|
+| Setup Time | ~5 minutes | ~30 minutes |
+| Best For | Evaluation, demos, quick testing | Production, customization |
+| Prerequisites | VirtualBox/VMware only | Docker, Git, shell access |
+| Customization | Limited (VM settings) | Full control |
+| Updates | Download new OVA | `git pull` + reinstall |
+
+---
+
 ## System Requirements
 
 ### Minimum Requirements

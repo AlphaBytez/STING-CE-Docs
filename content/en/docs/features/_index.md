@@ -48,6 +48,15 @@ Comprehensive insights into your data and usage.
 - Scheduled reports
 - Enterprise customization.
 
+### 🐝 QE Bee (Quality Engineering)
+Automated output validation agent for quality assurance.
+
+- PII token detection in outputs
+- Completeness and format validation
+- LLM-powered quality assessment
+- Webhook notifications
+- Review analytics and history.
+
 ## Advanced Features
 
 ### Bee Dances (Enterprise)
