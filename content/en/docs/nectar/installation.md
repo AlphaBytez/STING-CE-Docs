@@ -21,11 +21,15 @@ Make sure you've completed [Before You Install](../before-you-install/) first. Y
 1. Download Nectar from [GitHub Releases](https://github.com/AlphaBytez/Nectar/releases/latest)
 2. Open the `.dmg` file
 3. Drag **Nectar** to your Applications folder
-4. **First launch**: Right-click → Open (to bypass Gatekeeper for unsigned apps)
-5. Follow the setup wizard
+4. **Important**: Open Terminal and run:
+   ```bash
+   xattr -cr /Applications/Nectar.app
+   ```
+5. Launch Nectar from Applications
+6. Follow the setup wizard
 
-{{% alert title="Unsigned App Warning" color="info" %}}
-Nectar is currently unsigned. macOS will warn you on first launch. This is normal for alpha software.
+{{% alert title="Why the Terminal Command?" color="info" %}}
+Nectar is currently unsigned. macOS quarantines downloaded apps and blocks them from running. The `xattr -cr` command removes this quarantine flag so the app can launch. This is normal for alpha software—we'll sign future releases.
 {{% /alert %}}
 
 ### Windows
@@ -140,9 +144,16 @@ Now that Nectar is installed:
 
 ### Nectar won't start
 
-**Mac**: Check Security & Privacy settings - you may need to allow Nectar to run.
+**Mac**:
 
-**Windows**: Run as Administrator the first time.
+If right-click → Open doesn't work, run this in Terminal:
+```bash
+xattr -cr /Applications/Nectar.app
+```
+
+If you still have issues, check System Settings → Privacy & Security—there may be an "Open Anyway" button for blocked apps.
+
+**Windows**: Run as Administrator the first time. If SmartScreen blocks it, click "More info" → "Run anyway".
 
 **Linux**: Check Docker is installed and running:
 ```bash
