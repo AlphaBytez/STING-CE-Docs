@@ -97,7 +97,9 @@ graph TB
 
 ## Service Inventory
 
-### Core Services (Always Running)
+### 🟢 Core Services (Required)
+
+These services are required for STING-CE to function:
 
 | Service | Container | Port | Purpose |
 |---------|-----------|------|---------|
@@ -106,49 +108,57 @@ graph TB
 | **Chatbot** | `sting-ce-chatbot` | 8001 | Bee chat interface coordination |
 | **Knowledge** | `sting-ce-knowledge` | 8002 | Document processing & RAG |
 | **Messaging** | `sting-ce-messaging` | 8003 | Inter-service messaging |
-| **External AI** | `sting-ce-external-ai` | 8004 | AI orchestration & web search |
+| **External AI** | `sting-ce-external-ai` | 8004 | AI orchestration & providers |
 | **Kratos** | `sting-ce-kratos` | 4433/4434 | Identity & auth management |
-
-### AI & Search Services
-
-| Service | Container | Port | Purpose |
-|---------|-----------|------|---------|
-| **LLM Gateway** | `sting-ce-llm-gateway-proxy` | 11434 | Nginx proxy to Ollama models |
-| **SearXNG** | `sting-ce-searxng` | 8080 | Self-hosted meta-search engine |
-| **Demo AI** | `sting-ce-demo-ai` | 8005 | Demo/fallback AI responses |
-
-### Background Workers
-
-| Service | Container | Purpose |
-|---------|-----------|---------|
-| **Report Worker** | `sting-ce-report-worker` | Async report generation |
-| **QE Bee Worker** | `sting-ce-qe-bee-worker` | Quality assurance validation |
-| **Profile Sync** | `sting-ce-profile-sync-worker` | Kratos ↔ App user sync |
-
-### Data Services
-
-| Service | Container | Port | Purpose |
-|---------|-----------|------|---------|
 | **PostgreSQL** | `sting-ce-db` | 5432 | Primary relational database |
 | **ChromaDB** | `sting-ce-chroma` | 8000 | Vector embeddings database |
 | **Redis** | `sting-ce-redis` | 6379 | Cache, sessions, job queues |
 | **Vault** | `sting-ce-vault` | 8200 | Secrets & PII encryption |
+| **LLM Gateway** | `sting-ce-llm-gateway-proxy` | 11434 | Nginx proxy to LLM providers |
+| **Utils** | `sting-ce-utils` | - | Helper scripts, health checks |
 
-### Public APIs
+### 🟡 Background Workers (Required for Full Functionality)
 
-| Service | Container | Port | Purpose |
-|---------|-----------|------|---------|
-| **Public Bee** | `sting-ce-public-bee` | 8006 | External chatbot API |
+These workers handle async tasks. STING will run without them but with reduced features:
 
-### Utilities & Development
+| Service | Container | Purpose | Impact if Missing |
+|---------|-----------|---------|-------------------|
+| **Report Worker** | `sting-ce-report-worker` | Async report generation | No PDF reports |
+| **QE Bee Worker** | `sting-ce-qe-bee-worker` | Quality assurance validation | No QA on outputs |
+| **Profile Sync** | `sting-ce-profile-sync-worker` | Kratos ↔ App user sync | Manual user sync |
+
+### 🔵 Optional Services (Enhanced Features)
+
+These services add capabilities but are not required:
+
+| Service | Container | Port | Purpose | Enable With |
+|---------|-----------|------|---------|-------------|
+| **SearXNG** | `sting-ce-searxng` | 8080 | Self-hosted web search | `WEB_SEARCH_ENABLED=true` |
+| **Demo AI** | `sting-ce-demo-ai` | 8005 | Demo/fallback AI responses | Always included |
+| **Public Bee** | `sting-ce-public-bee` | 8006 | External chatbot API | For API-as-a-service |
+
+### 🟣 Development Only
+
+These services only run in development mode:
+
+| Service | Container | Profile | Purpose |
+|---------|-----------|---------|---------|
+| **Mailpit** | `sting-ce-mailpit` | `dev`, `development` | Email testing & capture |
+
+### ⚪ Observability Stack (docker-compose.full.yml)
+
+For production monitoring, use `docker-compose.full.yml` to add:
 
 | Service | Container | Purpose |
 |---------|-----------|---------|
-| **Utils** | `sting-ce-utils` | Helper scripts, health checks |
-| **Mailpit** | `sting-ce-mailpit` | Email testing (dev profile only) |
+| **Grafana** | `sting-ce-grafana` | Dashboards and visualization |
+| **Loki** | `sting-ce-loki` | Log aggregation |
+| **Promtail** | `sting-ce-promtail` | Log collection |
+| **Pollen Filter** | `sting-ce-pollen-filter` | PII sanitization in logs |
+
+> **Note:** The observability stack is recommended for production deployments but not required for development or small installations.
 
 ---
-
 ## Detailed Component Architecture
 
 ### 1. Frontend & Gateway Layer
@@ -391,27 +401,6 @@ All services communicate on the `sting-network` Docker bridge network.
 | 443 | Frontend/Nginx | HTTPS web access |
 | 5050 | Flask API | Direct API access (dev) |
 | 8200 | Vault | Secrets management UI |
-
----
-
-## Optional Components
-
-### Observability Stack (docker-compose.full.yml)
-
-For production deployments, enable the Beeacon observability stack:
-
-| Service | Purpose |
-|---------|---------|
-| **Grafana** | Dashboards and visualization |
-| **Loki** | Log aggregation |
-| **Promtail** | Log collection |
-| **Pollen Filter** | PII sanitization in logs |
-
-### Development Tools
-
-| Service | Profile | Purpose |
-|---------|---------|---------|
-| **Mailpit** | `dev`, `development` | Email testing |
 
 ---
 
