@@ -214,4 +214,5 @@ For admin-specific support:
 - [Honey Jar User Guide](/docs/honey-jars/honey-jar-user-guide/)
 - [Honey Jar Technical Reference](/docs/honey-jars/honey-jar-technical-reference/)
 - [Admin Setup](/docs/administration/admin-setup/)
+- [Maintenance Mode](/docs/administration/maintenance-mode/)
 - [API Reference](/api/api-reference/)
