@@ -13,5 +13,18 @@ Explore STING's AI capabilities including the Bee chat assistant, conversation m
 - **Bee Chat** - Conversational AI assistant with knowledge base integration
 - **Conversation Management** - Token-aware context with summarization
 - **Model Modes** - Different AI modes for various use cases
-- **QE Bee** - Automated output validation and quality assurance
+- **ReviewBee** - Unified quality assurance (requirements + PII + quality)
 - **Memory Architecture** - Intelligent context retention
+
+## Quality Assurance
+
+**ReviewBee** is STING's unified quality assurance system. It combines:
+
+| Check | What It Does |
+|-------|--------------|
+| **Requirements** | Verifies output matches original user request |
+| **PII Safety** | Ensures no sensitive data leaks through |
+| **Quality** | Grammar, structure, completeness |
+| **Regeneration** | Critic-Revise pattern for improvements |
+
+> **Note:** ReviewBee replaces the legacy QE Bee system. See [ReviewBee documentation](review-bee/) for migration details.
