@@ -10,6 +10,24 @@ description: >
 
 STING implements industry-leading security practices with passwordless authentication, WebAuthn, and advanced access controls.
 
+## 🔑 Encryption & Key Management
+
+{{% pageinfo color="warning" %}}
+**New in v1.0**: [Encryption Key Management](/docs/security/encryption-key-management/) - Critical documentation for protecting user data. Always backup your encryption keys before upgrades!
+{{% /pageinfo %}}
+
+### Data Encryption
+- **At-Rest Encryption**: All user files encrypted with AES-256-GCM
+- **Key Hierarchy**: Master key → User keys → File keys
+- **Vault Storage**: Keys secured in HashiCorp Vault
+
+### Key Management Commands
+```bash
+msting encryption-keys status   # Check key status
+msting encryption-keys backup   # Backup before upgrades
+msting encryption-keys restore  # Restore from backup
+```
+
 ## Authentication
 
 ### Passwordless Authentication
@@ -77,6 +95,7 @@ Fine-grained access controls based on attributes (enterprise feature).
 - HTTPS enforcement.
 - CORS configuration.
 - CSP headers.
+- **Encryption key backups** (see [Key Management](/docs/security/encryption-key-management/))
 
 ## Vulnerability Reporting
 
