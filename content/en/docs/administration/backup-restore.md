@@ -3,93 +3,256 @@ title: "Backup & Restore"
 linkTitle: "Backup & Restore"
 weight: 15
 description: >
-  Complete guide to backing up and restoring your STING installation.
+  Complete guide to backing up and restoring your STING installation, including the new automated backup system.
 ---
 
 # Backup & Restore Guide
 
-This guide covers all aspects of backing up and restoring your STING installation, including the critical encryption keys that protect user data.
+This guide covers all aspects of backing up and restoring your STING installation, including the automated backup system with monitoring and retention policies.
 
-{{% pageinfo color="warning" %}}
-**Critical**: Always backup encryption keys BEFORE performing system upgrades or migrations. See [Encryption Key Management](/docs/security/encryption-key-management/) for details.
-{{% /pageinfo %}}
+## New Backup System Overview
 
-## Quick Reference
+STING now includes a comprehensive backup system with:
+- **Unified backup wrapper** - Single script for all backup operations
+- **Automated scheduling** - Cron-based backup with configurable retention
+- **Health monitoring** - Alerts for stale or corrupted backups
+- **Remote sync** - Optional offsite backup to S3 or rsync
+- **Vault integration** - Separate Vault snapshot backups
 
-```bash
-# Encryption keys (CRITICAL - do first!)
-msting encryption-keys backup
-
-# Full system backup
-msting backup
-
-# Encrypted backup
-msting backup --encrypt
-```
-
-## What Gets Backed Up
-
-### Automatically Included
-
-| Component | Location | Backup Command |
-|-----------|----------|----------------|
-| Database | PostgreSQL | `msting backup` |
-| Configuration | `/opt/sting-ce/conf/` | `msting backup` |
-| Environment files | `/opt/sting-ce/env/` | `msting backup` |
-| SSL Certificates | `/opt/sting-ce/certs/` | `msting backup` |
-
-### Requires Separate Backup
-
-| Component | Location | Backup Command |
-|-----------|----------|----------------|
-| **Encryption Keys** | Vault | `msting encryption-keys backup` |
-| Uploaded Files | Vault | Included in Vault backup |
-| LLM Models | `/opt/sting-ce/models/` | Manual copy |
-
-## Backup Procedures
-
-### 1. Encryption Keys (Critical!)
-
-{{% pageinfo color="danger" %}}
-**DO THIS FIRST**: Encryption keys cannot be recovered if lost. All encrypted user files become permanently unreadable.
-{{% /pageinfo %}}
+## Quick Start
 
 ```bash
-# Backup encryption keys
-msting encryption-keys backup
+# Run a backup manually
+/opt/sting-ce/scripts/backup/backup-wrapper.sh backup
 
-# Save to specific location
-msting encryption-keys backup /secure/path/keys.backup
+# Check backup status
+/opt/sting-ce/scripts/backup/backup-wrapper.sh status
 
-# Verify backup was created
-ls -la sting-encryption-keys.backup
+# Install automated backups
+sudo /opt/sting-ce/scripts/backup/setup-backup-cron.sh install
+
+# Monitor backup health
+/opt/sting-ce/scripts/backup/backup-monitor.sh check
 ```
 
-**Store this backup securely:**
-- Password manager (1Password, Bitwarden)
-- Encrypted USB drive
-- Separate from main backups
+## Backup Components
 
-### 2. Full System Backup
+### What Gets Backed Up
+
+| Component | Description | Included In |
+|-----------|-------------|-------------|
+| PostgreSQL Database | All application data | Main backup |
+| Configuration Files | YAML configs, env files | Main backup |
+| SSL Certificates | TLS certificates and keys | Main backup |
+| Environment Files | Docker environment variables | Main backup |
+| Docker Volumes | config_data, vault_data, logs | Main backup |
+| Vault Secrets | HashiCorp Vault data | Separate Vault backup |
+
+### Backup Locations
+
+- **Main Backups**: `/opt/sting-backups/` (configurable)
+- **Vault Snapshots**: `/vault/backups/`
+- **Logs**: `/opt/sting-ce/logs/backup/`
+
+## Configuration
+
+Edit `/opt/sting-ce/conf/config.yml` to customize backup settings:
+
+```yaml
+backup:
+  enabled: true
+  default_directory: /opt/sting-backups
+  compression_level: 5
+
+  # Retention policy - both count and age are enforced
+  retention:
+    count: 5              # Keep last N backups
+    max_age_days: 30      # Maximum age in days (0 = no limit)
+
+  # Files to exclude from backup
+  exclude_patterns:
+    - "*.tmp"
+    - "*.log"
+    - "node_modules"
+    - ".git"
+    - "models"
+
+  # Encryption settings
+  encryption:
+    enabled: false        # Enable AES-256-CBC encryption
+    keychain: true        # Store key in system keychain
+
+  # Remote/offsite backup configuration
+  remote:
+    enabled: false        # Enable offsite sync
+    type: s3              # s3, rsync, ftp, sftp
+    destination: s3://my-bucket/sting-backups
+    user: backup_user     # SSH user for rsync
+    port: 22              # SSH port for rsync
+
+  # Vault backup settings
+  vault:
+    backup_enabled: true
+    directory: /vault/backups
+    retention_days: 7
+
+  # Notification settings
+  notifications:
+    enabled: false
+    webhook_url: ""       # Webhook for alerts
+    email: ""             # Email for alerts
+```
+
+## Backup Commands
+
+### Using the Unified Backup Wrapper
+
+```bash
+# Standard backup
+./scripts/backup/backup-wrapper.sh backup
+
+# Encrypted backup (recommended for offsite)
+./scripts/backup/backup-wrapper.sh backup --encrypt
+
+# Backup with custom retention
+./scripts/backup/backup-wrapper.sh backup --retention 10 --days 14
+
+# Sync to remote after backup
+./scripts/backup/backup-wrapper.sh backup --remote s3
+
+# Verify backup integrity
+./scripts/backup/backup-wrapper.sh verify
+
+# Show backup status and statistics
+./scripts/backup/backup-wrapper.sh status
+
+# Rotate old backups manually
+./scripts/backup/backup-wrapper.sh rotate
+
+# Backup Vault only
+./scripts/backup/backup-wrapper.sh vault
+```
+
+### Using the Legacy msting Command
 
 ```bash
 # Standard backup
 msting backup
 
-# Encrypted backup (recommended for cloud storage)
+# Encrypted backup
 msting backup --encrypt
+
+# Restore from backup
+msting restore /path/to/backup.tar.gz
 ```
 
-Backups are saved to: `/opt/sting-ce/backups/`
+## Automated Backups
 
-### 3. Database-Only Backup
+### Installing Cron Jobs
 
 ```bash
-# Direct PostgreSQL dump
-docker exec sting-ce-db pg_dump -U sting_user sting_db > backup.sql
+# Install with defaults
+sudo /opt/sting-ce/scripts/backup/setup-backup-cron.sh install
 
-# Compressed
-docker exec sting-ce-db pg_dump -U sting_user sting_db | gzip > backup.sql.gz
+# Custom backup directory
+sudo /opt/sting-ce/scripts/backup/setup-backup-cron.sh install --backup-dir /data/backups
+
+# View current configuration
+/opt/sting-ce/scripts/backup/setup-backup-cron.sh status
+
+# Remove automated backups
+sudo /opt/sting-ce/scripts/backup/setup-backup-cron.sh remove
+```
+
+### Default Schedule
+
+| Job | Schedule | Description |
+|-----|----------|-------------|
+| Daily Backup | `30 2 * * *` | Full backup at 2:30 AM |
+| Weekly Encrypted | `30 3 * * 0` | Encrypted backup Sunday 3:30 AM |
+| Vault Backup | `0 */6 * * *` | Vault snapshot every 6 hours |
+| Freshness Check | `0 * * * *` | Hourly backup age check |
+| Health Check | `0 6 * * *` | Daily comprehensive check |
+| Integrity Check | `0 7 * * 0` | Weekly archive verification |
+| Rotation | `0 4 * * *` | Daily cleanup of old backups |
+
+## Monitoring
+
+### Health Check Commands
+
+```bash
+# Run all health checks
+./scripts/backup/backup-monitor.sh check
+
+# Check only backup freshness
+./scripts/backup/backup-monitor.sh freshness
+
+# Verify backup integrity
+./scripts/backup/backup-monitor.sh integrity
+
+# Check Vault backup status
+./scripts/backup/backup-monitor.sh vault
+
+# Generate JSON report
+./scripts/backup/backup-monitor.sh report
+```
+
+### Alert Thresholds
+
+Configure via environment or config:
+
+- **Warning**: Backup older than 48 hours (default)
+- **Critical**: Backup older than 7 days (168 hours)
+- **Size Warning**: Backup smaller than 10 MB
+
+```bash
+# Custom thresholds
+MAX_BACKUP_AGE_HOURS=24 ./scripts/backup/backup-monitor.sh check
+CRITICAL_BACKUP_AGE_HOURS=72 ./scripts/backup/backup-monitor.sh check
+```
+
+## Remote/Offsite Backup
+
+### Amazon S3
+
+```yaml
+backup:
+  remote:
+    enabled: true
+    type: s3
+    destination: s3://my-backup-bucket/sting
+```
+
+```bash
+# Manual backup with S3 sync
+./scripts/backup/backup-wrapper.sh backup --remote s3
+```
+
+### rsync
+
+```yaml
+backup:
+  remote:
+    enabled: true
+    type: rsync
+    destination: backup.server.com
+    user: sting
+    port: 22
+    path: /backups/sting
+```
+
+## Encryption Keys (Critical!)
+
+{{% pageinfo color="warning" %}}
+**ALWAYS backup encryption keys BEFORE performing system upgrades or migrations.** See [Encryption Key Management](/docs/security/encryption-key-management/) for details.
+{{% /pageinfo %}
+
+```bash
+# Backup encryption keys
+msting encryption-keys backup
+
+# Restore encryption keys (before starting services!)
+msting encryption-keys restore /path/to/keys.backup
 ```
 
 ## Restore Procedures
@@ -97,10 +260,13 @@ docker exec sting-ce-db pg_dump -U sting_user sting_db | gzip > backup.sql.gz
 ### 1. Restore Encryption Keys (Do First!)
 
 ```bash
-# Restore encryption keys BEFORE starting services
+# Stop services
+msting stop
+
+# Restore encryption keys
 msting encryption-keys restore /path/to/keys.backup
 
-# Verify keys are restored
+# Verify restoration
 msting encryption-keys status
 ```
 
@@ -114,10 +280,10 @@ msting restore /path/to/backup.tar.gz
 msting restore /path/to/backup.tar.gz.enc
 ```
 
-### 3. Restore Database Only
+### 3. Database-Only Restore
 
 ```bash
-# Stop the app first
+# Stop the app
 msting stop app
 
 # Restore database
@@ -127,77 +293,23 @@ docker exec -i sting-ce-db psql -U sting_user sting_db < backup.sql
 msting start app
 ```
 
-## Migration to New Server
+## Retention Policy
 
-### Step-by-Step Process
+The backup system enforces both retention policies:
 
-1. **On OLD Server:**
-   ```bash
-   # Backup encryption keys (CRITICAL)
-   msting encryption-keys backup ~/migration/keys.backup
-   
-   # Backup full system
-   msting backup --encrypt
-   cp /opt/sting-ce/backups/latest.tar.gz.enc ~/migration/
-   ```
+- **Count-based**: Keep last N backups (default: 5)
+- **Age-based**: Remove backups older than N days (default: 30)
 
-2. **Transfer to NEW Server:**
-   ```bash
-   scp ~/migration/* newserver:/tmp/migration/
-   ```
+Older backups are removed first, then excess backups are trimmed to the count limit.
 
-3. **On NEW Server:**
-   ```bash
-   # Install STING first
-   curl -sSL https://get.sting.dev | bash
-   
-   # Stop services
-   msting stop
-   
-   # Restore encryption keys FIRST
-   msting encryption-keys restore /tmp/migration/keys.backup
-   
-   # Restore full backup
-   msting restore /tmp/migration/latest.tar.gz.enc
-   
-   # Start services
-   msting start
-   
-   # Verify
-   msting status
-   msting encryption-keys status
-   ```
-
-## Automated Backups
-
-### Using Cron
-
-```bash
-# Edit crontab
-sudo crontab -e
-
-# Daily backup at 2 AM
-0 2 * * * /usr/local/bin/msting backup --encrypt >> /var/log/sting-backup.log 2>&1
-
-# Weekly key backup (extra safety)
-0 3 * * 0 /usr/local/bin/msting encryption-keys backup /opt/sting-ce/backups/keys-$(date +\%Y\%m\%d).backup
-```
-
-### Backup Retention
-
-```bash
-# Keep last 7 daily backups
-find /opt/sting-ce/backups -name "*.tar.gz*" -mtime +7 -delete
-```
-
-## Disaster Recovery
+## Disaster Recovery Scenarios
 
 ### Scenario: Complete Server Loss
 
 1. Provision new server
 2. Retrieve encryption key backup from secure storage
 3. Retrieve system backup from offsite storage
-4. Follow migration procedure above
+4. Follow migration procedure
 
 ### Scenario: Database Corruption
 
@@ -205,10 +317,10 @@ find /opt/sting-ce/backups -name "*.tar.gz*" -mtime +7 -delete
 # Stop services
 msting stop
 
-# Restore from last known good backup
-msting restore /opt/sting-ce/backups/backup-YYYYMMDD.tar.gz
+# Restore from backup
+msting restore /opt/sting-backups/backup-20240124.tar.gz
 
-# Verify encryption keys match
+# Verify encryption keys
 msting encryption-keys status
 
 # Start services
@@ -218,38 +330,75 @@ msting start
 ### Scenario: Encryption Key Lost
 
 {{% pageinfo color="danger" %}}
-**Unfortunately, if encryption keys are truly lost:**
+If encryption keys are truly lost:
 - Encrypted files cannot be recovered
-- Users must re-upload all profile pictures and files
+- Users must re-upload profile pictures and files
 - Database records remain intact
 
-**Prevention**: Always maintain multiple key backups in secure locations.
-{{% /pageinfo %}}
+**Prevention**: Maintain multiple key backups in secure locations.
+{{% /pageinfo %}
+
+## Troubleshooting
+
+### Backup Fails to Create
+
+```bash
+# Check Docker is running
+docker ps
+
+# Check disk space
+df -h /opt/sting-backups
+
+# Check logs
+cat /opt/sting-ce/logs/backup/backup_$(date +%Y%m%d).log
+```
+
+### Backup Size Too Small
+
+```bash
+# List backups with sizes
+ls -lh /opt/sting-backups/*.tar.gz
+
+# Verify archive contents
+tar -tzf /opt/sting-backups/backup.tar.gz | head -20
+```
+
+### Monitoring Alerts
+
+```bash
+# Check for alerts
+cat /opt/sting-ce/logs/backup/alerts.log
+
+# Verify backup manually
+./scripts/backup/backup-wrapper.sh verify
+```
 
 ## Best Practices
 
-### Backup Schedule
+### Recommended Schedule
 
-| Component | Frequency | Retention |
-|-----------|-----------|-----------|
-| Encryption Keys | Weekly + before upgrades | Forever (multiple copies) |
-| Full Backup | Daily | 7 days |
-| Database | Hourly (production) | 24 hours |
-
-### Storage Recommendations
-
-- **Encryption Keys**: Password manager + encrypted offline storage
-- **Daily Backups**: Local + cloud storage (encrypted)
-- **Hourly DB**: Local only (rapid recovery)
+| Component | Frequency | Retention | Location |
+|-----------|-----------|-----------|----------|
+| Encryption Keys | Weekly + before upgrades | Forever | Password manager + offline |
+| Full Backup | Daily | 7 days | Local + S3 |
+| Vault Backup | Every 6 hours | 7 days | Local |
+| Health Check | Hourly | N/A | N/A |
 
 ### Testing
 
 - **Monthly**: Test restore to staging environment
 - **Quarterly**: Full disaster recovery drill
-- **Before Upgrades**: Verify all backups are current and accessible
+- **Before Upgrades**: Verify all backups are current
+
+### Storage Recommendations
+
+- **Encryption Keys**: Password manager + encrypted USB
+- **Daily Backups**: Local storage + S3 (encrypted)
+- **Vault Snapshots**: Local + replication
 
 ## Related Documentation
 
 - [Encryption Key Management](/docs/security/encryption-key-management/)
 - [Upgrade Guide](/docs/guides/upgrade/)
+- [Security Architecture](/docs/architecture/security-architecture/)
 - [Troubleshooting](/docs/troubleshooting/)
