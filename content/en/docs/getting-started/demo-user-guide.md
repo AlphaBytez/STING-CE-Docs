@@ -16,9 +16,7 @@ You have been granted access to a live STING demo server. This guide will walk y
 
 You should have received a **magic link** email from STING. Click the link to set up your account.
 
-{{% alert title="No email?" color="warning" %}}
-Check your spam folder. The email comes from the STING server and might get filtered.
-{{% /alert %}}
+> **No email?** Check your spam folder. The email comes from the STING server and might get filtered.
 
 ### Step 2: Set Up Your Passkey
 
@@ -27,13 +25,11 @@ After clicking the magic link, you will be prompted to create a **passkey**. Thi
 - On **Mac/Windows**: Your browser will offer to save the passkey to your device or password manager (1Password, iCloud Keychain, etc.)
 - On **Mobile**: You can use Face ID, Touch ID, or your device PIN
 
-{{% alert title="Tip" color="info" %}}
-Passkeys are phishing-resistant and more secure than passwords. No more remembering complex strings!
-{{% /alert %}}
+> **Tip:** Passkeys are phishing-resistant and more secure than passwords. No more remembering complex strings!
 
 ### Step 3: You Are In
 
-Once your passkey is set up, you will land on the STING dashboard. Welcome to the hive!
+Once your passkey is set up, you will land on the STING dashboard.
 
 ---
 
@@ -50,7 +46,7 @@ Bee is your AI assistant that knows about STING and can help answer questions.
    - "Help me understand the security features"
 3. Notice how Bee pulls context from the knowledge base to give informed answers
 
-**Pro tip:** Click the **Honey Jar selector** to connect Bee to specific knowledge bases for more focused answers.
+> **Pro tip:** Click the Honey Jar selector to connect Bee to specific knowledge bases for more focused answers.
 
 ---
 
@@ -66,9 +62,7 @@ STING can generate AI-powered reports on topics you are researching.
 4. Watch the progress bar as STING researches, writes, and quality-checks your report
 5. Download the finished PDF
 
-{{% alert title="Behind the scenes" color="info" %}}
-Your report goes through ReviewBee quality assurance before delivery.
-{{% /alert %}}
+> **Note:** Your report goes through ReviewBee quality assurance before delivery.
 
 ---
 
@@ -114,15 +108,15 @@ The Basket is your personal document workspace.
 
 ---
 
-## Quick Tips
+## Quick Reference
 
-| Feature       | Where to Find It   | What It Does                              |
-|:--------------|:-------------------|:------------------------------------------|
-| Bee Chat      | Sidebar            | AI assistant connected to your knowledge  |
-| Honey Jars    | Sidebar            | Browse and manage knowledge bases         |
-| Report Bee    | Sidebar            | Generate AI-powered reports               |
-| Basket        | Sidebar            | Your personal document space              |
-| Settings      | Top-right gear     | Themes, preferences, profile              |
+| Feature | Location | Description |
+|---------|----------|-------------|
+| Bee Chat | Sidebar | AI assistant connected to your knowledge |
+| Honey Jars | Sidebar | Browse and manage knowledge bases |
+| Report Bee | Sidebar | Generate AI-powered reports |
+| Basket | Sidebar | Your personal document space |
+| Settings | Top-right gear | Themes, preferences, profile |
 
 ---
 
@@ -140,7 +134,3 @@ The Basket is your personal document workspace.
 It is an open-source, self-hosted AI platform that keeps your data private while providing powerful knowledge management and AI capabilities. Everything runs on-premises and no data leaves the server.
 
 Learn more at [github.com/AlphaBytez/STING-CE](https://github.com/AlphaBytez/STING-CE)
-
----
-
-*Thanks for trying STING! We would love your feedback.*
