@@ -116,13 +116,13 @@ The Basket is your personal document workspace.
 
 ## Quick Tips
 
-| Feature | Where to Find It | What It Does |
-|---------|------------------|--------------|
-| Bee Chat | Sidebar | AI assistant connected to your knowledge |
-| Honey Jars | Sidebar | Browse and manage knowledge bases |
-| Report Bee | Sidebar | Generate AI-powered reports |
-| Basket | Sidebar | Your personal document space |
-| Settings | Top-right gear | Themes, preferences, profile |
+| Feature       | Where to Find It   | What It Does                              |
+|:--------------|:-------------------|:------------------------------------------|
+| Bee Chat      | Sidebar            | AI assistant connected to your knowledge  |
+| Honey Jars    | Sidebar            | Browse and manage knowledge bases         |
+| Report Bee    | Sidebar            | Generate AI-powered reports               |
+| Basket        | Sidebar            | Your personal document space              |
+| Settings      | Top-right gear     | Themes, preferences, profile              |
 
 ---
 
