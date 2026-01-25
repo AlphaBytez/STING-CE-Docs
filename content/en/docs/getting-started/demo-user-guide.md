@@ -107,19 +107,73 @@ The Basket is your personal document workspace.
 3. You can organize, download, or share items from here
 
 ---
-
 ## Quick Reference
 
-| Feature | Location | Description |
-|---------|----------|-------------|
-| Bee Chat | Sidebar | AI assistant connected to your knowledge |
-| Honey Jars | Sidebar | Browse and manage knowledge bases |
-| Report Bee | Sidebar | Generate AI-powered reports |
-| Basket | Sidebar | Your personal document space |
-| Settings | Top-right gear | Themes, preferences, profile |
+<table>
+  <thead>
+    <tr>
+      <th style="width: 120px;">Feature</th>
+      <th style="width: 140px;">Location</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bee Chat</td>
+      <td>Sidebar</td>
+      <td>AI assistant connected to your knowledge</td>
+    </tr>
+    <tr>
+      <td>Honey Jars</td>
+      <td>Sidebar</td>
+      <td>Browse and manage knowledge bases</td>
+    </tr>
+    <tr>
+      <td>Report Bee</td>
+      <td>Sidebar</td>
+      <td>Generate AI-powered reports</td>
+    </tr>
+    <tr>
+      <td>Basket</td>
+      <td>Sidebar</td>
+      <td>Your personal document space</td>
+    </tr>
+    <tr>
+      <td>Settings</td>
+      <td>Top-right gear</td>
+      <td>Themes, preferences, profile</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
+      <td>Sidebar</td>
+      <td>AI assistant connected to your knowledge</td>
+    </tr>
+    <tr>
+      <td>Honey Jars</td>
+      <td>Sidebar</td>
+      <td>Browse and manage knowledge bases</td>
+    </tr>
+    <tr>
+      <td>Report Bee</td>
+      <td>Sidebar</td>
+      <td>Generate AI-powered reports</td>
+    </tr>
+    <tr>
+      <td>Basket</td>
+      <td>Sidebar</td>
+      <td>Your personal document space</td>
+    </tr>
+    <tr>
+      <td>Settings</td>
+      <td>Top-right gear</td>
+      <td>Themes, preferences, profile</td>
+    </tr>
+  </tbody>
+</table>
 
+---
 ## Need Help?
 
 - **In-app:** Ask Bee! It knows a lot about STING.
