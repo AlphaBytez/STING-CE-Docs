@@ -245,46 +245,9 @@ backup:
 
 {{% pageinfo color="warning" %}}
 **ALWAYS backup encryption keys BEFORE performing system upgrades or migrations.** See [Encryption Key Management](/docs/security/encryption-key-management/) for details.
-{{% /pageinfo %}
+{{% /pageinfo %}}
 
 ```bash
-# Backup encryption keys
-msting encryption-keys backup
-
-# Restore encryption keys (before starting services!)
-msting encryption-keys restore /path/to/keys.backup
-```
-
-## Restore Procedures
-
-### 1. Restore Encryption Keys (Do First!)
-
-```bash
-# Stop services
-msting stop
-
-# Restore encryption keys
-msting encryption-keys restore /path/to/keys.backup
-
-# Verify restoration
-msting encryption-keys status
-```
-
-### 2. Restore Full System
-
-```bash
-# From standard backup
-msting restore /path/to/backup.tar.gz
-
-# From encrypted backup (auto-detected)
-msting restore /path/to/backup.tar.gz.enc
-```
-
-### 3. Database-Only Restore
-
-```bash
-# Stop the app
-msting stop app
 
 # Restore database
 docker exec -i sting-ce-db psql -U sting_user sting_db < backup.sql
@@ -336,7 +299,7 @@ If encryption keys are truly lost:
 - Database records remain intact
 
 **Prevention**: Maintain multiple key backups in secure locations.
-{{% /pageinfo %}
+{{% /pageinfo %}}
 
 ## Troubleshooting
 
