@@ -10,24 +10,30 @@ description: >
 
 You have been granted access to a live STING demo server. This guide will walk you through your first login and some fun things to try.
 
+---
+
 ## Logging In
 
 ### Step 1: Check Your Email
 
 You should have received a **magic link** email from STING. Click the link to set up your account.
 
-> **No email?** Check your spam folder. The email comes from the STING server and might get filtered.
+{{% alert title="No email?" color="info" %}}
+Check your spam folder. The email comes from the STING server and might get filtered.
+{{% /alert %}}
 
 ### Step 2: Set Up Your Passkey
 
 After clicking the magic link, you will be prompted to create a **passkey**. This is your secure, passwordless login method.
 
-- On **Mac/Windows**: Your browser will offer to save the passkey to your device or password manager (1Password, iCloud Keychain, etc.)
-- On **Mobile**: You can use Face ID, Touch ID, or your device PIN
+- **On Mac/Windows:** Your browser will offer to save the passkey to your device or password manager (1Password, iCloud Keychain, etc.)
+- **On Mobile:** You can use Face ID, Touch ID, or your device PIN
 
-> **Tip:** Passkeys are phishing-resistant and more secure than passwords. No more remembering complex strings!
+{{% alert title="Tip" color="success" %}}
+Passkeys are phishing-resistant and more secure than passwords. No more remembering complex strings!
+{{% /alert %}}
 
-### Step 3: You Are In
+### Step 3: You're In!
 
 Once your passkey is set up, you will land on the STING dashboard.
 
@@ -35,7 +41,7 @@ Once your passkey is set up, you will land on the STING dashboard.
 
 ## Things to Try
 
-### Chat with Bee
+### 💬 Chat with Bee
 
 Bee is your AI assistant that knows about STING and can help answer questions.
 
@@ -46,11 +52,13 @@ Bee is your AI assistant that knows about STING and can help answer questions.
    - "Help me understand the security features"
 3. Notice how Bee pulls context from the knowledge base to give informed answers
 
-> **Pro tip:** Click the Honey Jar selector to connect Bee to specific knowledge bases for more focused answers.
+{{% alert title="Pro tip" color="success" %}}
+Click the Honey Jar selector to connect Bee to specific knowledge bases for more focused answers.
+{{% /alert %}}
 
 ---
 
-### Generate a Report
+### 📄 Generate a Report
 
 STING can generate AI-powered reports on topics you are researching.
 
@@ -62,11 +70,13 @@ STING can generate AI-powered reports on topics you are researching.
 4. Watch the progress bar as STING researches, writes, and quality-checks your report
 5. Download the finished PDF
 
-> **Note:** Your report goes through ReviewBee quality assurance before delivery.
+{{% alert title="Note" color="info" %}}
+Your report goes through ReviewBee quality assurance before delivery.
+{{% /alert %}}
 
 ---
 
-### Explore Honey Jars
+### 🍯 Explore Honey Jars
 
 Honey Jars are STING's knowledge containers. Think of them as smart folders that understand their contents.
 
@@ -77,17 +87,20 @@ Honey Jars are STING's knowledge containers. Think of them as smart folders that
 
 ---
 
-### Personalize Your Experience
+### 🎨 Personalize Your Experience
 
 #### Change Your Theme
 
 1. Click the **gear icon** in the top-right
 2. Go to **Appearance**
 3. Try different themes:
-   - **Glass** - Modern glassmorphism design
-   - **Midnight** - Deep dark mode
-   - **Ocean** - Cool blue tones
-   - **Forest** - Nature-inspired greens
+
+| Theme | Description |
+|-------|-------------|
+| **Glass** | Modern glassmorphism design |
+| **Midnight** | Deep dark mode |
+| **Ocean** | Cool blue tones |
+| **Forest** | Nature-inspired greens |
 
 #### Upload a Profile Picture
 
@@ -98,7 +111,7 @@ Honey Jars are STING's knowledge containers. Think of them as smart folders that
 
 ---
 
-### Use Your Basket
+### 🧺 Use Your Basket
 
 The Basket is your personal document workspace.
 
@@ -107,73 +120,19 @@ The Basket is your personal document workspace.
 3. You can organize, download, or share items from here
 
 ---
+
 ## Quick Reference
 
-<table>
-  <thead>
-    <tr>
-      <th style="width: 120px;">Feature</th>
-      <th style="width: 140px;">Location</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Bee Chat</td>
-      <td>Sidebar</td>
-      <td>AI assistant connected to your knowledge</td>
-    </tr>
-    <tr>
-      <td>Honey Jars</td>
-      <td>Sidebar</td>
-      <td>Browse and manage knowledge bases</td>
-    </tr>
-    <tr>
-      <td>Report Bee</td>
-      <td>Sidebar</td>
-      <td>Generate AI-powered reports</td>
-    </tr>
-    <tr>
-      <td>Basket</td>
-      <td>Sidebar</td>
-      <td>Your personal document space</td>
-    </tr>
-    <tr>
-      <td>Settings</td>
-      <td>Top-right gear</td>
-      <td>Themes, preferences, profile</td>
-    </tr>
-  </tbody>
-</table>
+| Feature | Location | Description |
+|---------|----------|-------------|
+| **Bee Chat** | Sidebar | AI assistant connected to your knowledge |
+| **Honey Jars** | Sidebar | Browse and manage knowledge bases |
+| **Report Bee** | Sidebar | Generate AI-powered reports |
+| **Basket** | Sidebar | Your personal document space |
+| **Settings** | Top-right gear | Themes, preferences, profile |
 
 ---
-      <td>Sidebar</td>
-      <td>AI assistant connected to your knowledge</td>
-    </tr>
-    <tr>
-      <td>Honey Jars</td>
-      <td>Sidebar</td>
-      <td>Browse and manage knowledge bases</td>
-    </tr>
-    <tr>
-      <td>Report Bee</td>
-      <td>Sidebar</td>
-      <td>Generate AI-powered reports</td>
-    </tr>
-    <tr>
-      <td>Basket</td>
-      <td>Sidebar</td>
-      <td>Your personal document space</td>
-    </tr>
-    <tr>
-      <td>Settings</td>
-      <td>Top-right gear</td>
-      <td>Themes, preferences, profile</td>
-    </tr>
-  </tbody>
-</table>
 
----
 ## Need Help?
 
 - **In-app:** Ask Bee! It knows a lot about STING.
@@ -183,8 +142,8 @@ The Basket is your personal document workspace.
 
 ## About STING
 
-**STING** stands for **Secure Trusted Intelligence and Networking Guardian**.
+**STING** stands for **S**ecure **T**rusted **I**ntelligence and **N**etworking **G**uardian.
 
-It is an open-source, self-hosted AI platform that keeps your data private while providing powerful knowledge management and AI capabilities. Everything runs on-premises and no data leaves the server.
+It is an open-source, self-hosted AI platform that keeps your data private while providing powerful knowledge management and AI capabilities. Everything runs on-premises—no data leaves the server.
 
-Learn more at [github.com/AlphaBytez/STING-CE](https://github.com/AlphaBytez/STING-CE)
+{{< button href="https://github.com/AlphaBytez/STING-CE" >}}View on GitHub{{< /button >}}
