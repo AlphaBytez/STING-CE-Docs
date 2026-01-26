@@ -146,4 +146,4 @@ The Basket is your personal document workspace.
 
 It is an open-source, self-hosted AI platform that keeps your data private while providing powerful knowledge management and AI capabilities. Everything runs on-premises—no data leaves the server.
 
-{{< button href="https://github.com/AlphaBytez/STING-CE" >}}View on GitHub{{< /button >}}
+[**View on GitHub →**](https://github.com/AlphaBytez/STING-CE)
